@@ -1,0 +1,9 @@
+.u {
+    &__shadow {
+        @include box-shadow(0rem -0.3rem 1.9rem rgba(0, 0, 0, 0.13));
+    }
+
+    &__uppercase {
+        text-transform: uppercase;
+    }
+}
