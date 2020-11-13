@@ -1,0 +1,22 @@
+/* Importing HelveticaNeue Font */
+
+@font-face {
+    font-family: "HelveticaNeue";
+    src: local("HelveticaNeue"), local("HelveticaNeue"),
+        url("#{$font-folder}/HelveticaNeue.woff2") format("woff2");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "HelveticaNeue";
+    src: local("HelveticaNeueLt"), local("HelveticaNeueLt"),
+        url("#{$font-folder}/HelveticaNeueLt.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "HelveticaNeue";
+    src: url("#{$font-folder}/HelveticaNeuBold.woff") format("woff"),
+        /* Modern Browsers */ url("#{$font-folder}/HelveticaNeuBold.woff2")
+            format("woff2"); /* Modern Browsers */
+    font-weight: bold;
+}
