@@ -36,5 +36,5 @@ To run the story book.
 
 ## Versions
 
-Node - 15.2.0
-npm - 7.0.8
+Node - 14.15.0
+npm - 6.14.8
