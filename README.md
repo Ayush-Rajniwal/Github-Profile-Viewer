@@ -4,6 +4,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+### `nvm use`
+
+To switch to the recommended version of node for this project.
+
 ### `npm start`
 
 Runs the app in the development mode.\

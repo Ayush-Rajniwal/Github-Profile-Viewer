@@ -1,4 +1,6 @@
 {
-    "Hello World": "Hello World!!",
-    "Learn React": "Learn React"
+    "Github Profile Viewer": "Github Profile Viewer",
+    "Search, Follow & View Profiles": "Search, Follow & View Profiles",
+    "Login":"Login",
+    "Logout":"Logout"
 }

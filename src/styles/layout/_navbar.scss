@@ -1,0 +1,53 @@
+.nav {
+    @include flex(space-between, flex-start, column);
+    position: relative;
+    width: 100%;
+    font-size: 1.6rem;
+    padding: 1rem;
+    background: $primary-bg;
+    color: $primary-text;
+
+    @include media($mediaSM) {
+        padding: 0rem 5rem;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    &__logo {
+        width: 6rem;
+    }
+
+    &__links {
+        display: none;
+        list-style: none;
+        padding: 0;
+        width: 100%;
+
+        &--active {
+            @include flex(center, center);
+        }
+
+        @include media($mediaSM) {
+            @include flex(center, center);
+
+            width: auto;
+        }
+    }
+
+    &__link {
+        display: block;
+        margin: 0 2rem;
+    }
+
+    &__hamburger {
+        position: absolute;
+        right: 2rem;
+        top: 2.5rem;
+        font-size: 2.8rem;
+        cursor: pointer;
+
+        @include media($mediaSM) {
+            display: none;
+        }
+    }
+}
