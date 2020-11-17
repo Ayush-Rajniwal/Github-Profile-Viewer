@@ -1,4 +1,6 @@
 {
-    "Hello World": "नमस्ते दुनिया",
-    "Learn React": "जानें रिएक्ट"
+    "Github Profile Viewer": "गिथब प्रोफ़ाइल दर्शक",
+    "Search, Follow & View Profiles": "खोज, अनुसरण और प्रोफ़ाइल देखें",
+    "Login":"लॉग इन",
+    "Logout": "लॉग आउट"
 }
