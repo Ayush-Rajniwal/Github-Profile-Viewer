@@ -1,0 +1,7 @@
+.login {
+    @include flex(center, center, column);
+    font-size: 1.6rem;
+    background: $secondary-bg;
+    color: $primary-text;
+    height: 100%;
+}

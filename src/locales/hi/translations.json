@@ -2,5 +2,9 @@
     "Github Profile Viewer": "गिथब प्रोफ़ाइल दर्शक",
     "Search, Follow & View Profiles": "खोज, अनुसरण और प्रोफ़ाइल देखें",
     "Login":"लॉग इन",
-    "Logout": "लॉग आउट"
+    "Logout": "लॉग आउट",
+    "Username":"उपयोगकर्ता नाम",
+    "Password":"कुंजिका",
+    "Token":"टोकन" ,
+    "Profile Name":"प्रोफ़ाइल नाम"
 }
