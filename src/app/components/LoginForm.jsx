@@ -39,7 +39,7 @@ function LoginForm() {
         axios(config)
             .then(function (response) {
                 dispatch({ type: "LOGIN_USER" });
-                console.log(response);
+                dispatch({ type: "SAVE_USER", payload: response });
             })
             .catch(function (error) {
                 setLoginError(true);
