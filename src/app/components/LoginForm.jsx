@@ -26,8 +26,6 @@ function LoginForm() {
     const dispatch = useDispatch();
 
     const onSubmit = (values) => {
-        console.log(values);
-
         let config = {
             method: "get",
             url: "https://api.github.com/user",
@@ -38,7 +36,7 @@ function LoginForm() {
 
         axios(config)
             .then(function (response) {
-                dispatch({ type: "LOGIN_USER" });
+                dispatch({ type: "LOGIN_USER", payload: values });
                 dispatch({ type: "SAVE_USER", payload: response });
             })
             .catch(function (error) {
