@@ -1,9 +1,10 @@
 import React from "react";
+import LoginForm from "../components/LoginForm";
 
 function LoginContainer(props) {
     return (
-        <div>
-            {props.location.state ? props.location.state.message : "Login page"}
+        <div className={"login"}>
+            <LoginForm />
         </div>
     );
 }

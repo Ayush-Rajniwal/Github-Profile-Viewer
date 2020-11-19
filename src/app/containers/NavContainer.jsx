@@ -17,10 +17,6 @@ function NavContainer() {
         dispatch({ type: "TOGGLE_NAV" });
     };
 
-    const loginUser = () => {
-        dispatch({ type: "LOGIN_USER" });
-    };
-
     return (
         <Router>
             <nav className={"nav"}>
@@ -50,8 +46,8 @@ function NavContainer() {
 
                     <li>
                         <Button
-                            onClick={loginUser}
-                            className={"nav__link button button--login"}
+                            type="link"
+                            className={"nav__link button--primary"}
                             to="/login"
                         >
                             {isLoggedIn ? t("Logout") : t("Login")}

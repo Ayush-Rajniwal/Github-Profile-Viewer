@@ -9,13 +9,19 @@ export default {
 };
 
 export const Login = () => (
-    <Button to="/login" className={"button button--login"}>
+    <Button type="link" to="/login" className={"button--primary"}>
         Login
     </Button>
 );
 
 export const Logout = () => (
-    <Button to="/logout" className={"button button--login"}>
+    <Button type="link" to="/" className={"button--primary"}>
         Logout
+    </Button>
+);
+
+export const Submit = () => (
+    <Button type="submit" className={"button--primary"}>
+        Submit
     </Button>
 );

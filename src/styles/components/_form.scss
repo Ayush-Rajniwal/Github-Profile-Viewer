@@ -1,0 +1,29 @@
+.form {
+    border: 0.2rem solid white;
+    padding: 2rem;
+    &__field {
+        padding: 0.5rem 0;
+    }
+
+    &__input {
+        &--text {
+            padding: 1rem 1rem 1rem 0;
+        }
+    }
+
+    &__text {
+        &--label {
+            display: block;
+            font-size: 1.4rem;
+            padding: 1rem 0;
+            font-weight: 700;
+        }
+
+        &--error {
+            padding: 1rem 0 0 0;
+            color: $red;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+    }
+}

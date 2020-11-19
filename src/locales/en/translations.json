@@ -2,5 +2,9 @@
     "Github Profile Viewer": "Github Profile Viewer",
     "Search, Follow & View Profiles": "Search, Follow & View Profiles",
     "Login":"Login",
-    "Logout":"Logout"
+    "Logout":"Logout",
+    "Username":"Username",
+    "Password":"Password",
+    "Token":"Token" ,
+    "Profile Name":"Profile Name"
 }
