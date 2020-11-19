@@ -21,7 +21,7 @@ function reducer(state = initialState, action) {
             return {
                 ...state,
                 profile: {
-                    avatar: payload.data.avatar,
+                    avatar: payload.data.avatar_url,
                     username: payload.data.login,
                     location: payload.data.location,
                     following: payload.data.following,
