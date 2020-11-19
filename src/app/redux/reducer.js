@@ -2,6 +2,7 @@ import initialState from "./store";
 
 function reducer(state = initialState, action) {
     let payload = action.payload;
+
     switch (action.type) {
         case "TOGGLE_NAV":
             return {
@@ -12,7 +13,8 @@ function reducer(state = initialState, action) {
         case "LOGIN_USER":
             return {
                 ...state,
-                isLoggedIn: !state.isLoggedIn,
+                isLoggedIn: true,
+                loggedInToken: payload.password,
             };
 
         case "SAVE_USER":
