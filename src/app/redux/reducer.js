@@ -2,7 +2,6 @@ import initialState from "./store";
 
 function reducer(state = initialState, action) {
     let payload = action.payload;
-
     switch (action.type) {
         case "TOGGLE_NAV":
             return {
@@ -11,10 +10,22 @@ function reducer(state = initialState, action) {
             };
 
         case "LOGIN_USER":
+            console.log(payload);
             return {
                 ...state,
                 isLoggedIn: true,
-                loggedInToken: payload.password,
+                loggedInUser: {
+                    token: payload.token,
+                    name: payload.username,
+                    avatar: payload.avatar,
+                },
+            };
+
+        case "LOGOUT_USER":
+            return {
+                ...state,
+                isLoggedIn: false,
+                loggedInToken: "",
             };
 
         case "SAVE_USER":
@@ -22,6 +33,7 @@ function reducer(state = initialState, action) {
                 ...state,
                 profile: {
                     avatar: payload.data.avatar_url,
+                    name: payload.data.name,
                     username: payload.data.login,
                     location: payload.data.location,
                     following: payload.data.following,

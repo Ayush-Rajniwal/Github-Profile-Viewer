@@ -5,16 +5,22 @@ import { useTranslation } from "react-i18next";
 import MyRoute from "../../routes";
 import logo from "../../assets/images/logo.svg";
 import Button from "../components/Button";
+import Avatar from "../components/Avatar";
 
 function NavContainer() {
     const { t } = useTranslation();
 
     const isNavOpen = useSelector((state) => state.isNavOpen);
     const isLoggedIn = useSelector((state) => state.isLoggedIn);
+    const loggedInUser = useSelector((state) => state.loggedInUser);
     const dispatch = useDispatch();
 
     const toggleNav = () => {
         dispatch({ type: "TOGGLE_NAV" });
+    };
+
+    const logout = () => {
+        dispatch({ type: "LOGOUT_USER" });
     };
 
     return (
@@ -36,6 +42,7 @@ function NavContainer() {
                             <i className={"icon icon-search"}></i>
                         </NavLink>
                     </li>
+
                     {isLoggedIn ? (
                         <li>
                             <NavLink className={"nav__link"} to="/connect">
@@ -44,14 +51,34 @@ function NavContainer() {
                         </li>
                     ) : null}
 
+                    {isLoggedIn ? (
+                        <li>
+                            <NavLink
+                                className={"nav__link nav__avatar"}
+                                to={`/${loggedInUser.name}`}
+                            >
+                                <Avatar img={`${loggedInUser.avatar}`} />
+                            </NavLink>
+                        </li>
+                    ) : null}
+
                     <li>
-                        <Button
-                            type="link"
-                            className={"nav__link button--primary"}
-                            to="/login"
-                        >
-                            {isLoggedIn ? t("Logout") : t("Login")}
-                        </Button>
+                        {isLoggedIn ? (
+                            <Button
+                                className={"nav__link button--primary"}
+                                onClick={logout}
+                            >
+                                {t("Logout")}
+                            </Button>
+                        ) : (
+                            <Button
+                                type="link"
+                                className={"nav__link button--primary"}
+                                to="/login"
+                            >
+                                {t("Login")}
+                            </Button>
+                        )}
                     </li>
                 </ul>
             </nav>

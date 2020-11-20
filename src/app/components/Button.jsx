@@ -6,10 +6,7 @@ function Button(props) {
         case "link":
             return (
                 <NavLink to={props.to} onClick={props.onClick}>
-                    <button
-                        disabled={props.disabled}
-                        className={`button ${props.className}`}
-                    >
+                    <button className={`button ${props.className}`}>
                         {props.children}
                     </button>
                 </NavLink>
@@ -25,7 +22,7 @@ function Button(props) {
         default:
             return (
                 <button
-                    disabled={props.disabled}
+                    onClick={props.onClick}
                     className={`button ${props.className}`}
                 >
                     {props.children}
