@@ -12,6 +12,7 @@
 
         @include media($mediaSM) {
             @include flex(space-evenly, stretch, row);
+            min-width: unset;
         }
     }
 
