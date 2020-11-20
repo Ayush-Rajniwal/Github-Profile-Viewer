@@ -55,12 +55,12 @@ function LoginForm() {
             });
     };
 
-    const popupClose2 = () => {
+    const popupClose = () => {
         setLoginError(false);
     };
 
     return loginError ? (
-        <Popup title="Error" message="Invalid Token!!" onClick={popupClose2} />
+        <Popup title="Error" message="Invalid Token!!" onClick={popupClose} />
     ) : (
         <Formik
             initialValues={initialValues}
