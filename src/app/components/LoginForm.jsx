@@ -38,7 +38,6 @@ function LoginForm() {
 
         axios(config)
             .then(function (response) {
-                console.log(response);
                 dispatch({
                     type: "LOGIN_USER",
                     payload: {
@@ -52,7 +51,6 @@ function LoginForm() {
             })
             .catch(function (error) {
                 console.log(error);
-
                 setLoginError(true);
             });
     };
