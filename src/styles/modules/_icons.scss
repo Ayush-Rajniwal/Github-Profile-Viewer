@@ -29,14 +29,39 @@ i {
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-github {
+    &:before {
+        content: $icon-github;
+    }
+}
 .icon-align-right {
     &:before {
         content: $icon-align-right;
     }
 }
+.icon-at-symbol {
+    &:before {
+        content: $icon-at-symbol;
+    }
+}
 .icon-close {
     &:before {
         content: $icon-close;
+    }
+}
+.icon-envelope {
+    &:before {
+        content: $icon-envelope;
+    }
+}
+.icon-link {
+    &:before {
+        content: $icon-link;
+    }
+}
+.icon-location {
+    &:before {
+        content: $icon-location;
     }
 }
 .icon-search {

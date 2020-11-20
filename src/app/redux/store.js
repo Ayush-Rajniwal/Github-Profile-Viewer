@@ -1,9 +1,14 @@
 const initialState = {
     isNavOpen: false,
     isLoggedIn: false,
-    loggedInToken: "",
+    loggedInUser: {
+        token: "",
+        name: "",
+        avatar: "",
+    },
     profile: {
         avatar: "",
+        name: "",
         username: "",
         location: "",
         following: "",
