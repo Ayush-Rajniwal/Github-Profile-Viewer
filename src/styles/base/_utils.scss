@@ -26,5 +26,9 @@
         &--uppercase {
             text-transform: uppercase;
         }
+
+        &--large {
+            font-size: 4rem;
+        }
     }
 }

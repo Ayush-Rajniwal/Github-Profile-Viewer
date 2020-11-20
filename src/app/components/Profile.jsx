@@ -1,6 +1,5 @@
 import React from "react";
 import IconText from "../components/IconText";
-import Counter from "../components/Counter";
 import Avatar from "./Avatar";
 
 function Profile({ profile }) {
