@@ -6,5 +6,10 @@
     "Username":"Username",
     "Password":"Password",
     "Token":"Token" ,
-    "Profile Name":"Profile Name"
+    "Profile Name":"Profile Name",
+    "Unable to fetch the user :(":"Unable to fetch the user :(",
+    "Connect more":"Connect more",
+    "Refresh":"Refresh",
+    "Follow":"Follow",
+    "Remove":"Remove"
 }
