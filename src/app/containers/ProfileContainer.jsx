@@ -13,6 +13,9 @@ function ProfileContainer({
 }) {
     const dispatch = useDispatch();
     const profile = useSelector((state) => state.profile);
+    const isLoggedIn = useSelector((state) => state.isLoggedIn);
+    const loggedInUser = useSelector((state) => state.loggedInUser);
+
     const [noProfile, setNoProfile] = useState(false);
     const history = useHistory();
 
@@ -40,6 +43,25 @@ function ProfileContainer({
             });
     }, [username, dispatch]);
 
+    const followBtn = (e) => {
+        let id = e.target.dataset.id;
+        console.log(e);
+        let config = {
+            method: "PUT",
+            url: `https://api.github.com/user/following/${id}`,
+            headers: {
+                Authorization: `token ${loggedInUser.token}`,
+            },
+        };
+        axios(config)
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    };
+
     return (
         <div className="profile">
             {noProfile ? (
@@ -49,7 +71,14 @@ function ProfileContainer({
                     onClick={popupClose}
                 />
             ) : (
-                <Profile profile={profile} />
+                <Profile
+                    profile={{
+                        ...profile,
+                        isLoggedIn: isLoggedIn,
+                        loggedInUserName: loggedInUser.name,
+                        followBtn: followBtn,
+                    }}
+                />
             )}
         </div>
     );

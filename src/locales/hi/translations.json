@@ -6,5 +6,10 @@
     "Username":"उपयोगकर्ता नाम",
     "Password":"कुंजिका",
     "Token":"टोकन" ,
-    "Profile Name":"प्रोफ़ाइल नाम"
+    "Profile Name":"प्रोफ़ाइल नाम",
+    "Follow":"फॉलो",
+    "Followers":"फोल्लोवेर्स",
+    "Following":"फोल्लोविंग",
+    "Email":"ईमेल",
+    "Blog":"ब्लॉग"
 }

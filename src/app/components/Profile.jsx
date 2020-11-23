@@ -1,8 +1,12 @@
 import React from "react";
 import IconText from "../components/IconText";
 import Avatar from "./Avatar";
+import Button from "./Button";
+import { useTranslation } from "react-i18next";
 
 function Profile({ profile }) {
+    const { t } = useTranslation();
+
     return (
         <div className="profile__container">
             <div className="profile__left-section">
@@ -10,8 +14,8 @@ function Profile({ profile }) {
                     <Avatar img={`${profile.avatar}`} />
                 </div>
 
-                <div className="profile__userdata">
-                    <a className="u__text--center" href={`${profile.link}`}>
+                <div className="profile__userdata u__text--center">
+                    <a className="" href={`${profile.link}`}>
                         <IconText
                             className="profile__username"
                             text={profile.username}
@@ -19,6 +23,16 @@ function Profile({ profile }) {
                             <i className="icon icon-at-symbol"></i>
                         </IconText>
                     </a>
+                    {profile.isLoggedIn &&
+                    profile.loggedInUserName !== profile.username ? (
+                        <Button
+                            onClick={profile.followBtn}
+                            data-id={`${profile.username}`}
+                            className="button button--follow u__margin--tb"
+                        >
+                            {t("Follow")}
+                        </Button>
+                    ) : null}
                 </div>
             </div>
             <div className="profile__right-section">
@@ -37,14 +51,14 @@ function Profile({ profile }) {
 
                         <IconText
                             className="u__text--center u__text--uppercase"
-                            text="Followers"
+                            text={t("Followers")}
                         >
                             <div>{profile.followers}</div>
                         </IconText>
 
                         <IconText
                             className="u__text--center u__text--uppercase"
-                            text="Following"
+                            text={t("Following")}
                         >
                             <div>{profile.following}</div>
                         </IconText>
@@ -53,7 +67,7 @@ function Profile({ profile }) {
                             <a href={`mailto:${profile.email}`}>
                                 <IconText
                                     className="u__text--center u__text--uppercase"
-                                    text="Email"
+                                    text={t("Email")}
                                 >
                                     <i className="icon icon-envelope"></i>
                                 </IconText>
@@ -64,7 +78,7 @@ function Profile({ profile }) {
                             <a href={`${profile.blog}`}>
                                 <IconText
                                     className="u__text--center"
-                                    text="Blog"
+                                    text={t("Blog")}
                                 >
                                     <i className="icon icon-link"></i>
                                 </IconText>
@@ -72,7 +86,9 @@ function Profile({ profile }) {
                         ) : null}
                     </div>
                     {profile.bio ? (
-                        <p className="profile__bio">{profile.bio}</p>
+                        <p className="profile__bio u__text--center">
+                            {profile.bio}
+                        </p>
                     ) : null}
                 </div>
             </div>
