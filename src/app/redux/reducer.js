@@ -24,7 +24,11 @@ function reducer(state = initialState, action) {
             return {
                 ...state,
                 isLoggedIn: false,
-                loggedInToken: "",
+                loggedInUser: {
+                    token: "",
+                    name: "",
+                    avatar: "",
+                },
             };
 
         case "SAVE_USER":
