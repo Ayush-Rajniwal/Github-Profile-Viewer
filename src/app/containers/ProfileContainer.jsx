@@ -6,12 +6,14 @@ import Profile from "../components/Profile";
 import Popup from "../components/Popup";
 import List from "../components/List";
 import NotFound from "../components/NotFound";
+import { useTranslation } from "react-i18next";
 
 function ProfileContainer({
     match: {
         params: { username },
     },
 }) {
+    const { t } = useTranslation();
     const dispatch = useDispatch();
     const profile = useSelector((state) => state.profile);
     const isLoggedIn = useSelector((state) => state.isLoggedIn);
@@ -155,12 +157,18 @@ function ProfileContainer({
                         toggleFollowingList={toggleFollowingList}
                     />
                     {showFollowers ? (
-                        <Popup title="Followers" onClick={toggleFollowerList}>
+                        <Popup
+                            title={t("Followers")}
+                            onClick={toggleFollowerList}
+                        >
                             <List data={followersList} />
                         </Popup>
                     ) : null}
                     {showFollowing ? (
-                        <Popup title="Following" onClick={toggleFollowingList}>
+                        <Popup
+                            title={t("Following")}
+                            onClick={toggleFollowingList}
+                        >
                             <List data={followingList} />
                         </Popup>
                     ) : null}
