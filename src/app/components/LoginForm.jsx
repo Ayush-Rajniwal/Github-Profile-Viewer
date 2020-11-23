@@ -60,7 +60,9 @@ function LoginForm() {
     };
 
     return loginError ? (
-        <Popup title="Error" message="Invalid Token!!" onClick={popupClose} />
+        <Popup title="Error" onClick={popupClose}>
+            Invalid Token!!
+        </Popup>
     ) : (
         <Formik
             initialValues={initialValues}

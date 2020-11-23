@@ -22,6 +22,7 @@ function Button(props) {
         default:
             return (
                 <button
+                    data-id={props["data-id"]}
                     onClick={props.onClick}
                     className={`button ${props.className}`}
                 >
