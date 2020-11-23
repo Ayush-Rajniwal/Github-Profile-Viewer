@@ -2,6 +2,7 @@
     @include flex(center, center, column);
     width: 100%;
     font-weight: 900;
+    font-size: 1.6rem;
 
     &__item {
         @include flex(space-between, center);
