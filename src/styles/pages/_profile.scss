@@ -8,11 +8,9 @@
 
     &__container {
         @include flex(center, center, column);
-        min-width: 70rem;
 
         @include media($mediaSM) {
             @include flex(space-evenly, stretch, row);
-            min-width: unset;
         }
     }
 
@@ -34,11 +32,12 @@
     }
 
     &__content {
-        @include flex(center, center, column);
+        @include flex(flex-start, center, column);
         height: 100%;
         width: 35rem;
 
         @include media($mediaSM) {
+            padding: 3rem 0;
             max-width: 40rem;
             min-width: 30rem;
         }
