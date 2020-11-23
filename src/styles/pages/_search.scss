@@ -1,0 +1,14 @@
+.search {
+    @include flex(flex-start, center, column);
+    padding: 4rem 0;
+    font-size: 1.6rem;
+    background: $secondary-bg;
+    color: $primary-text;
+    height: 100%;
+
+    &__container {
+        @include flex(center, center, column);
+
+        width: 35rem;
+    }
+}

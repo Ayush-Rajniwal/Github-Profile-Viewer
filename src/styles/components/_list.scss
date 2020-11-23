@@ -1,0 +1,24 @@
+.list {
+    @include flex(center, center, column);
+    width: 100%;
+    font-weight: 900;
+
+    &__item {
+        @include flex(space-between, center);
+        width: 20rem;
+        background: $white;
+        color: $primary-bg;
+        margin: 1rem 0;
+        box-shadow: 0 0.8rem 1.6rem 0 rgba(0, 0, 0, 0.2);
+        border-radius: 2rem;
+    }
+
+    &__wrapper-avatar {
+        width: 5rem;
+    }
+
+    &__text {
+        padding: 0 1rem;
+        width: 100%;
+    }
+}
