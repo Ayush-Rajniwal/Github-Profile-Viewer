@@ -4,7 +4,7 @@ import Avatar from "./Avatar";
 import Button from "./Button";
 import { useTranslation } from "react-i18next";
 
-function Profile({ profile }) {
+function Profile({ profile, toggleFollowerList, toggleFollowingList }) {
     const { t } = useTranslation();
 
     return (
@@ -50,6 +50,7 @@ function Profile({ profile }) {
                         ) : null}
 
                         <IconText
+                            onClick={toggleFollowerList}
                             className="u__text--center u__text--uppercase"
                             text={t("Followers")}
                         >
@@ -57,6 +58,7 @@ function Profile({ profile }) {
                         </IconText>
 
                         <IconText
+                            onClick={toggleFollowingList}
                             className="u__text--center u__text--uppercase"
                             text={t("Following")}
                         >
