@@ -6,7 +6,6 @@ function List({ data }) {
     return (
         <div className="list">
             {data.map((item) => {
-                console.log(item);
                 return (
                     <Link
                         to={`/${item.username}`}
