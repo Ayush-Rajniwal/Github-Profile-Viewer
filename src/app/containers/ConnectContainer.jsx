@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import FollowCard from "../components/FollowCard";
 import Button from "../components/Button";
 import { useTranslation } from "react-i18next";
@@ -13,33 +13,39 @@ function ConnectContainer() {
     const token = useSelector((state) => state.loggedInUser.token);
     const { t } = useTranslation();
 
-    const fetchUsers = (since = 0) => {
-        let config = {
-            method: "get",
-            url: `https://api.github.com/users?since=${since}&per_page=30`,
-        };
+    const fetchSuggestions = useCallback(
+        (since = 0) => {
+            let config = {
+                method: "get",
+                url: `https://api.github.com/users?since=${since}&per_page=30`,
+                headers: {
+                    Authorization: `token ${token}`,
+                },
+            };
 
-        axios(config)
-            .then(function (response) {
-                response.data = response.data.map(function (user) {
-                    return { login: user.login, avatar: user.avatar_url };
+            axios(config)
+                .then(function (response) {
+                    response.data = response.data.map(function (user) {
+                        return { login: user.login, avatar: user.avatar_url };
+                    });
+                    setUserList([...response.data]);
+                    setError(false);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    setError(true);
                 });
-                setUserList([...response.data]);
-                setError(false);
-            })
-            .catch(function (error) {
-                console.log(error);
-                setError(true);
-            });
-    };
+        },
+        [token]
+    );
 
     useEffect(() => {
-        fetchUsers();
-    }, []);
+        fetchSuggestions();
+    }, [fetchSuggestions]);
 
     const emptyCheck = () => {
         if (userList.length <= userPerPage) {
-            fetchUsers(lastIndex);
+            fetchSuggestions(lastIndex);
             setLastIndex(lastIndex * 2);
         }
     };
