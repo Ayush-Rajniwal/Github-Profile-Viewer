@@ -1,4 +1,4 @@
-import NavContainer from "./app/containers/NavContainer";
+import NavContainer from "@containers/NavContainer";
 import { useTranslation } from "react-i18next";
 
 function App() {
