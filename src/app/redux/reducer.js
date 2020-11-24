@@ -1,5 +1,5 @@
-import initialState from "./store";
-import {LOGIN_USER,TOGGLE_NAV} from "./actionTypes";
+import initialState from "@redux/store";
+import { LOGIN_USER, TOGGLE_NAV } from "@redux/actionTypes";
 
 function reducer(state = initialState, action) {
     switch (action.type) {
