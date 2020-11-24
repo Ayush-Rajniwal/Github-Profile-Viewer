@@ -1,7 +1,7 @@
 import React from "react";
 import { addDecorator } from "@storybook/react";
-import ProviderWrapper from "../src/providers/ProviderWrapper";
-import "../src/styles/styles.scss";
+import ProviderWrapper from "@providers/ProviderWrapper";
+import "@styles/styles.scss";
 
 addDecorator((story) => <ProviderWrapper>{story()}</ProviderWrapper>);
 

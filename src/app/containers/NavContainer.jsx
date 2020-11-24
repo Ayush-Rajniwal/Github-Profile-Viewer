@@ -2,7 +2,7 @@ import React from "react";
 import { Link, BrowserRouter as Router, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
-import MyRoute from "../../routes";
+import MyRoute from "@src/routes";
 import logo from "@images/logo.svg";
 import Button from "@components/Button";
 import { TOGGLE_NAV, LOGIN_USER } from "@redux/actionTypes";

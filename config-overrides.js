@@ -6,6 +6,10 @@ module.exports = function override(config) {
         "@images": "src/assets/images",
         "@containers": "src/app/containers",
         "@redux": "src/app/redux",
+        "@src": "src",
+        "@styles": "src/styles",
+        "@provider": "src/providers",
+        "@locales": "src/locales",
     })(config);
 
     return config;
