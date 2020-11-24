@@ -2,10 +2,10 @@ import React from "react";
 import { Redirect, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import LoginContainer from "./app/containers/LoginContainer";
-import HomeContainer from "./app/containers/HomeContainer";
-import ConnectContainer from "./app/containers/ConnectContainer";
-import SearchContainer from "./app/containers/SearchContainer";
+import LoginContainer from "@containers/LoginContainer";
+import HomeContainer from "@containers/HomeContainer";
+import ConnectContainer from "@containers/ConnectContainer";
+import SearchContainer from "@containers/SearchContainer";
 
 function MyRoute() {
     const isLoggedIn = useSelector((state) => state.isLoggedIn);
