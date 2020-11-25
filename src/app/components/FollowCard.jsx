@@ -1,6 +1,7 @@
 import React from "react";
 import Avatar from "./Avatar";
 import { useTranslation } from "react-i18next";
+import Button from "./Button";
 
 function FollowCard({ avatar, username, onClick }) {
     const { t } = useTranslation();
@@ -16,12 +17,22 @@ function FollowCard({ avatar, username, onClick }) {
                     <a href={`/${username}`}>{username}</a>
                 </div>
                 <div className="fc__icons">
-                    <i className="icon icon-user-add" data-id={username}>
-                        {t("Follow")}
-                    </i>
-                    <i className="icon icon-close" data-id={username}>
-                        {t("Remove")}
-                    </i>
+                    <Button
+                        className="button button--follow"
+                        data-id={username}
+                    >
+                        <i data-id={username} className="icon icon-user-add">
+                            {t("Follow")}
+                        </i>
+                    </Button>
+                    <Button
+                        className="button button--follow"
+                        data-id={username}
+                    >
+                        <i data-id={username} className="icon icon-close">
+                            {t("Remove")}
+                        </i>
+                    </Button>
                 </div>
             </div>
         </div>
