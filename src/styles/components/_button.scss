@@ -13,12 +13,9 @@
     }
 
     &--follow {
+        font-size: 1.2rem;
         background: $primary-text;
         color: $primary-bg;
-    }
-
-    &--following {
-        background: $white;
-        color: $primary-bg;
+        margin: 1rem;
     }
 }
