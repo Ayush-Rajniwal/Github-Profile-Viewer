@@ -1,7 +1,7 @@
 import i18n from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
-import translationEng from "./locales/en/translations.json";
-import translationHindi from "./locales/hi/translations.json";
+import translationEng from "@locales/en/translations.json";
+import translationHindi from "@locales/hi/translations.json";
 
 i18n.use(LanguageDetector).init({
     resources: {

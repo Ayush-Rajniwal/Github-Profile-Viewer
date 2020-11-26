@@ -1,16 +1,17 @@
-import initialState from "./store";
+import initialState from "@redux/store";
+import { LOGIN_USER, TOGGLE_NAV } from "@redux/actionTypes";
 
 function reducer(state = initialState, action) {
     let payload = action.payload;
 
     switch (action.type) {
-        case "TOGGLE_NAV":
+        case TOGGLE_NAV:
             return {
                 ...state,
                 isNavOpen: !state.isNavOpen,
             };
 
-        case "LOGIN_USER":
+        case LOGIN_USER:
             return {
                 ...state,
                 isLoggedIn: true,

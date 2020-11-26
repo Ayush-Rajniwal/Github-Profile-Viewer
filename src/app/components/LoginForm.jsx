@@ -6,7 +6,7 @@ import Button from "./Button";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
-import Popup from "./Popup";
+import Popup from "@components/Popup";
 
 function LoginForm() {
     const { t } = useTranslation();

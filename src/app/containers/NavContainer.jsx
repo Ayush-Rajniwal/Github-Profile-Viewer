@@ -2,9 +2,10 @@ import React from "react";
 import { Link, BrowserRouter as Router, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
-import MyRoute from "../../routes";
-import logo from "../../assets/images/logo.svg";
-import Button from "../components/Button";
+import MyRoute from "@src/routes";
+import logo from "@images/logo.svg";
+import Button from "@components/Button";
+import { TOGGLE_NAV } from "@redux/actionTypes";
 
 function NavContainer() {
     const { t } = useTranslation();
@@ -14,7 +15,7 @@ function NavContainer() {
     const dispatch = useDispatch();
 
     const toggleNav = () => {
-        dispatch({ type: "TOGGLE_NAV" });
+        dispatch({ type: TOGGLE_NAV });
     };
 
     return (

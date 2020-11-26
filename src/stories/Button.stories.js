@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import Button from "../app/components/Button";
+import Button from "@components/Button";
 
 export default {
     title: "Button",
