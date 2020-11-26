@@ -1,5 +1,5 @@
 import React from "react";
-import InputText from "../app/components/InputText";
+import InputText from "@components/InputText";
 import { Formik } from "formik";
 
 const initialValues = {

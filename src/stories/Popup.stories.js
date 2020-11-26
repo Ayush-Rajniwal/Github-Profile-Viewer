@@ -1,5 +1,5 @@
 import React from "react";
-import Popup from "../app/components/Popup";
+import Popup from "@components/Popup";
 
 export default {
     title: "Popup",
