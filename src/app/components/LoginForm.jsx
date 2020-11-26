@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import InputText from "./InputText";
-import Button from "./Button";
+import InputText from "@components/InputText";
+import Button from "@components/Button";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
