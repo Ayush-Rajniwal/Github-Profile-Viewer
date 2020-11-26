@@ -48,22 +48,29 @@ function Profile({ profile, toggleFollowerList, toggleFollowingList }) {
                                 <i className="icon icon-location "></i>
                             </IconText>
                         ) : null}
-
-                        <IconText
+                        <Button
                             onClick={toggleFollowerList}
-                            className="u__text--center u__text--uppercase"
-                            text={t("Followers")}
+                            className="button--popup"
                         >
-                            <div>{profile.followers}</div>
-                        </IconText>
+                            <IconText
+                                className="u__text--center u__text--uppercase"
+                                text={t("Followers")}
+                            >
+                                <div>{profile.followers}</div>
+                            </IconText>
+                        </Button>
 
-                        <IconText
+                        <Button
+                            className="button--popup"
                             onClick={toggleFollowingList}
-                            className="u__text--center u__text--uppercase"
-                            text={t("Following")}
                         >
-                            <div>{profile.following}</div>
-                        </IconText>
+                            <IconText
+                                className="u__text--center u__text--uppercase"
+                                text={t("Following")}
+                            >
+                                <div>{profile.following}</div>
+                            </IconText>
+                        </Button>
 
                         {profile.email ? (
                             <a href={`mailto:${profile.email}`}>
