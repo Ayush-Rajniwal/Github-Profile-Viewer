@@ -17,6 +17,7 @@
     &:active {
         background-color: $ripple-color;
         background-size: 100%;
-        transition: background 0s;
+        transition: all 0.1s;
+        transform: scale(0.95);
     }
 }
