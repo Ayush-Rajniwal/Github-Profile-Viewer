@@ -1,5 +1,6 @@
 import React from "react";
 import { Field, ErrorMessage } from "formik";
+import PropTypes from "prop-types";
 
 function InputText({ name, label, type, placeholder }) {
     return (
@@ -24,5 +25,12 @@ function InputText({ name, label, type, placeholder }) {
         </div>
     );
 }
+
+InputText.propTypes = {
+    name: PropTypes.string,
+    type: PropTypes.string,
+    label: PropTypes.string,
+    placeholder: PropTypes.string,
+};
 
 export default InputText;

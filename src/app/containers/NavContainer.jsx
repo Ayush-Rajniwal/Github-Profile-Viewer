@@ -21,10 +21,15 @@ function NavContainer() {
     return (
         <Router>
             <nav className={"nav"}>
-                <Link className={"nav__logo"} to="/">
+                <Link id="logo-btn" className={"nav__logo"} to="/">
                     <img width="100%" src={logo} alt="logo" />
                 </Link>
-                <Link to={"#"} className={"nav__hamburger"} onClick={toggleNav}>
+                <Link
+                    id="hamburger-btn"
+                    to={"#"}
+                    className={"nav__hamburger"}
+                    onClick={toggleNav}
+                >
                     <i className={"icon icon-align-right"}></i>
                 </Link>
                 <ul
@@ -33,7 +38,11 @@ function NavContainer() {
                     }
                 >
                     <li>
-                        <NavLink className={"nav__link"} to="/search">
+                        <NavLink
+                            id="search-btn"
+                            className={"nav__link"}
+                            to="/search"
+                        >
                             <i className={"icon icon-search"}></i>
                         </NavLink>
                     </li>
@@ -47,6 +56,7 @@ function NavContainer() {
 
                     <li>
                         <Button
+                            id="login-btn"
                             type="link"
                             className={"nav__link button--primary"}
                             to="/login"

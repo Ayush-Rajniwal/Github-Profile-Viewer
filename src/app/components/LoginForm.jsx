@@ -69,6 +69,7 @@ function LoginForm() {
                     placeholder={t("Token")}
                 />
                 <Button
+                    id="login-submit"
                     type="submit"
                     className="button--primary u__margin--tb u__uppercase button__ripple"
                 >
