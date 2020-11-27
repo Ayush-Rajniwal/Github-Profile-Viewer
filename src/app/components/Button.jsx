@@ -7,7 +7,7 @@ function Button(props) {
     switch (props.type) {
         case LINK:
             return (
-                <NavLink to={props.to} onClick={props.onClick}>
+                <NavLink id={props.id} to={props.to} onClick={props.onClick}>
                     <button className={`button ${props.className}`}>
                         {props.children}
                     </button>
@@ -16,14 +16,18 @@ function Button(props) {
 
         case SUBMIT:
             return (
-                <button type="submit" className={`button ${props.className}`}>
+                <button
+                    id={props.id}
+                    type="submit"
+                    className={`button ${props.className}`}
+                >
                     {props.children}
                 </button>
             );
 
         default:
             return (
-                <button className={`button ${props.className}`}>
+                <button id={props.id} className={`button ${props.className}`}>
                     {props.children}
                 </button>
             );
@@ -32,6 +36,8 @@ function Button(props) {
 
 Button.propTypes = {
     to: PropTypes.string,
+    id: PropTypes.string,
+    type: PropTypes.string,
     onClick: PropTypes.func,
     className: PropTypes.string,
     children: PropTypes.any,
