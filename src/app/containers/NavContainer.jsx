@@ -1,17 +1,17 @@
-import React from "react";
-import { Link, BrowserRouter as Router, NavLink } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { useTranslation } from "react-i18next";
-import MyRoute from "@src/routes";
-import logo from "@images/logo.svg";
-import Button from "@components/Button";
-import { TOGGLE_NAV } from "@redux/actionTypes";
+import React from 'react';
+import { BrowserRouter as Router, NavLink } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import MyRoute from '@src/routes';
+import logo from '@images/logo.svg';
+import Button from '@components/Button';
+import { TOGGLE_NAV } from '@redux/actionTypes';
 
 function NavContainer() {
     const { t } = useTranslation();
 
-    const isNavOpen = useSelector((state) => state.isNavOpen);
-    const isLoggedIn = useSelector((state) => state.isLoggedIn);
+    const isNavOpen = useSelector((state) => state.ui.isNavOpen);
+    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
     const dispatch = useDispatch();
 
     const toggleNav = () => {
@@ -20,48 +20,43 @@ function NavContainer() {
 
     return (
         <Router>
-            <nav className={"nav"}>
-                <Link id="logo-btn" className={"nav__logo"} to="/">
-                    <img width="100%" src={logo} alt="logo" />
-                </Link>
-                <Link
-                    id="hamburger-btn"
-                    to={"#"}
-                    className={"nav__hamburger"}
-                    onClick={toggleNav}
-                >
-                    <i className={"icon icon-align-right"}></i>
-                </Link>
+            <nav className="nav">
+                <NavLink className="nav__logo" to="/">
+                    <img src={logo} alt="logo" />
+                </NavLink>
+                <NavLink to="#" className="nav__hamburger" onClick={toggleNav}>
+                    <i className="icon icon-align-right" />
+                </NavLink>
                 <ul
-                    className={
-                        "nav__links" + (isNavOpen ? " nav__links--active" : "")
-                    }
+                    className={`nav__links ${
+                        isNavOpen ? ' nav__links--active' : ''
+                    }`}
                 >
                     <li>
                         <NavLink
                             id="search-btn"
-                            className={"nav__link"}
+                            className="nav__link"
                             to="/search"
                         >
-                            <i className={"icon icon-search"}></i>
+                            <i className="icon icon-search" />
                         </NavLink>
                     </li>
                     {isLoggedIn ? (
                         <li>
-                            <NavLink className={"nav__link"} to="/connect">
-                                <i className={"icon icon-user-add"}></i>
+                            <NavLink className="nav__link" to="/connect">
+                                <i className="icon icon-user-add" />
                             </NavLink>
                         </li>
                     ) : null}
 
                     <li>
                         <Button
-                            id="login-btn"
                             type="link"
-                            className={"nav__link button--primary"}
+                            id="login-btn"
+                            className="nav__link button button--primary"
                             to="/login"
                         >
-                            {isLoggedIn ? t("Logout") : t("Login")}
+                            {isLoggedIn ? t('Logout') : t('Login')}
                         </Button>
                     </li>
                 </ul>
