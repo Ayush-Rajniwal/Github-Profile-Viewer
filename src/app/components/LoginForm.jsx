@@ -5,8 +5,8 @@ import InputText from "@components/InputText";
 import Button from "@components/Button";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
-import axios from "axios";
 import Popup from "@components/Popup";
+import GET from "@services/apiCall";
 
 function LoginForm() {
     const { t } = useTranslation();
@@ -26,20 +26,19 @@ function LoginForm() {
     const dispatch = useDispatch();
 
     const onSubmit = (values) => {
-        let config = {
-            method: "get",
-            url: "https://api.github.com/user",
-            headers: {
-                Authorization: `token ${values.password}`,
-            },
-        };
+        const apiValue = GET("/user", {
+            isAuthenticated: true,
+            password: values.password,
+        });
 
-        axios(config)
-            .then(function (response) {
+        apiValue
+            .then((response) => {
                 dispatch({ type: "LOGIN_USER", payload: values });
                 dispatch({ type: "SAVE_USER", payload: response });
+                console.log(response);
             })
-            .catch(function (error) {
+            .catch((err) => {
+                console.log(err);
                 setLoginError(true);
             });
     };
@@ -71,7 +70,7 @@ function LoginForm() {
                 />
                 <Button
                     type="submit"
-                    className="button--primary u__margin--tb u__uppercase"
+                    className="button--primary u__margin--tb u__uppercase button__ripple"
                 >
                     {t("Login")}
                 </Button>
