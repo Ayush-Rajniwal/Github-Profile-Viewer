@@ -2,6 +2,13 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## How to run
+
+1. `npm install`
+2. `nvm use`
+3. `npm start`
+4. `npm run storybook` - to run storybook.
+
 ## Available Scripts
 
 ### `nvm use`

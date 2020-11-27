@@ -1,35 +1,58 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { LINK, SUBMIT } from '@constants/variables';
 
-function Button(props) {
-    switch (props.type) {
-        case "link":
-            return (
-                <NavLink to={props.to} onClick={props.onClick}>
-                    <button className={`button ${props.className}`}>
-                        {props.children}
-                    </button>
-                </NavLink>
-            );
-
-        case "submit":
-            return (
-                <button type="submit" className={`button ${props.className}`}>
-                    {props.children}
+function Button({
+    type, to, onClick, className, children, id,
+}) {
+    switch (type) {
+    case LINK:
+        return (
+            <Link to={to} onClick={onClick}>
+                <button type="button" className={className}>
+                    {children}
                 </button>
-            );
+            </Link>
+        );
 
-        default:
-            return (
-                <button
-                    data-id={props["data-id"]}
-                    onClick={props.onClick}
-                    className={`button ${props.className}`}
-                >
-                    {props.children}
-                </button>
-            );
+    case SUBMIT:
+        return (
+            <button
+                id={id}
+                type="submit"
+                className={`button ${className}`}
+            >
+                {children}
+            </button>
+        );
+
+    default:
+        return (
+            <button
+                onClick={onClick}
+                type="button"
+                id={id}
+                className={`button ${className}`}
+            >
+                {children}
+            </button>
+        );
     }
 }
+
+Button.propTypes = {
+    id: PropTypes.string.isRequired,
+    to: PropTypes.string,
+    type: PropTypes.string.isRequired,
+    onClick: PropTypes.func,
+    className: PropTypes.string.isRequired,
+    children: PropTypes.node.isRequired,
+};
+
+Button.defaultProps = {
+    to: '#',
+    onClick: null,
+};
 
 export default Button;
