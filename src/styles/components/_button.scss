@@ -4,11 +4,19 @@
     padding: 1.2rem;
     border: none;
     cursor: pointer;
+    background-position: center;
+    transition: background 0.8s;
 
     &--primary {
         font-weight: 600;
         background: $primary-text;
         color: $primary-bg;
         width: 100%;
+    }
+
+    &:active {
+        background-color: $ripple-color;
+        background-size: 100%;
+        transition: background 0s;
     }
 }

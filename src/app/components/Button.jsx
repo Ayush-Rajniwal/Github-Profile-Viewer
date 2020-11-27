@@ -1,21 +1,19 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { LINK, SUBMIT } from "@constants/variables";
 
 function Button(props) {
     switch (props.type) {
-        case "link":
+        case LINK:
             return (
                 <NavLink to={props.to} onClick={props.onClick}>
-                    <button
-                        disabled={props.disabled}
-                        className={`button ${props.className}`}
-                    >
+                    <button className={`button ${props.className}`}>
                         {props.children}
                     </button>
                 </NavLink>
             );
 
-        case "submit":
+        case SUBMIT:
             return (
                 <button type="submit" className={`button ${props.className}`}>
                     {props.children}
@@ -24,10 +22,7 @@ function Button(props) {
 
         default:
             return (
-                <button
-                    disabled={props.disabled}
-                    className={`button ${props.className}`}
-                >
+                <button className={`button ${props.className}`}>
                     {props.children}
                 </button>
             );
