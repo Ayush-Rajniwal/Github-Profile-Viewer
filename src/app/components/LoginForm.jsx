@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Popup from '@components/Popup';
-import GET from '@services/apiCall';
+import apiCall from '@services/apiCall';
 import { LOGIN_USER, SAVE_USER } from '@redux/actionTypes';
 
 function LoginForm() {
@@ -29,24 +29,21 @@ function LoginForm() {
     const dispatch = useDispatch();
 
     const onSubmit = (values) => {
-        const apiValue = GET('/user', {
+        apiCall('GET', '/user', {
             isAuthenticated: true,
             password: values.password,
-        });
-
-        apiValue
-            .then((response) => {
-                dispatch({
-                    type: LOGIN_USER,
-                    payload: {
-                        token: values.password,
-                        username: response.data.login,
-                        avatar: response.data.avatar_url,
-                    },
-                });
-                dispatch({ type: SAVE_USER, payload: response });
-                history.push(`/${response.data.login}`);
-            })
+        }).then((response) => {
+            dispatch({
+                type: LOGIN_USER,
+                payload: {
+                    token: values.password,
+                    username: response.data.login,
+                    avatar: response.data.avatar_url,
+                },
+            });
+            dispatch({ type: SAVE_USER, payload: response });
+            history.push(`/${response.data.login}`);
+        })
             .catch(() => {
                 setLoginError(true);
             });
