@@ -1,17 +1,11 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "@styles/styles.scss";
-import App from "@src/App";
-import { I18nextProvider } from "react-i18next";
-import i18n from "@src/i18n";
-import { createStore } from "redux";
-import reducer from "@redux/reducer";
-import { Provider } from "react-redux";
-
-const store = createStore(
-    reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+import React from 'react';
+import ReactDOM from 'react-dom';
+import '@styles/styles.scss';
+import App from '@src/App';
+import { I18nextProvider } from 'react-i18next';
+import i18n from '@src/i18n';
+import { Provider } from 'react-redux';
+import { store } from '@redux/store';
 
 ReactDOM.render(
     <React.StrictMode>
@@ -21,5 +15,5 @@ ReactDOM.render(
             </Provider>
         </I18nextProvider>
     </React.StrictMode>,
-    document.getElementById("root")
+    document.getElementById('root'),
 );

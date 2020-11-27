@@ -1,27 +1,35 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Button from '@components/Button';
 
 function Popup({ title, message, onClick }) {
     return (
-        <div className={"popup"}>
-            <div className={"popup__content u__shadow"}>
-                <div className={"popup__title"}>
+        <div className="popup">
+            <div className="popup__content u__shadow">
+                <div className="popup__title">
                     {title}
-                    <i
-                        className="icon icon-close popup__close-btn"
+                    <Button
+                        id="close-popup"
+                        type="button"
+                        className="button__close"
                         onClick={onClick}
-                    ></i>
+                    >
+                        <i
+                            aria-label="close popup"
+                            className="icon icon-close popup__close-btn"
+                        />
+                    </Button>
                 </div>
-                <div className={"popup__message"}>{message}</div>
+                <div className="popup__message">{message}</div>
             </div>
         </div>
     );
 }
 
 Popup.propTypes = {
-    title: PropTypes.string,
-    message: PropTypes.string,
-    onClick: PropTypes.func,
+    title: PropTypes.string.isRequired,
+    message: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired,
 };
 
 export default Popup;

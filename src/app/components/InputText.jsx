@@ -1,8 +1,10 @@
-import React from "react";
-import { Field, ErrorMessage } from "formik";
-import PropTypes from "prop-types";
+import React from 'react';
+import { Field, ErrorMessage } from 'formik';
+import PropTypes from 'prop-types';
 
-function InputText({ name, label, type, placeholder }) {
+function InputText({
+    name, label, type, placeholder,
+}) {
     return (
         <div className="form__field">
             {label ? (
@@ -27,10 +29,10 @@ function InputText({ name, label, type, placeholder }) {
 }
 
 InputText.propTypes = {
-    name: PropTypes.string,
-    type: PropTypes.string,
-    label: PropTypes.string,
-    placeholder: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    placeholder: PropTypes.string.isRequired,
 };
 
 export default InputText;

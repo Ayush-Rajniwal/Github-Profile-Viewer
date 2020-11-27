@@ -1,14 +1,14 @@
-import React from "react";
-import InputText from "@components/InputText";
-import { Formik } from "formik";
+import React from 'react';
+import InputText from '@components/InputText';
+import { Formik } from 'formik';
 
 const initialValues = {
-    username: "",
-    password: "",
+    username: '',
+    password: '',
 };
 
 export default {
-    title: "InputText",
+    title: 'InputText',
     component: InputText,
     decorators: [
         (story) => <Formik initialValues={initialValues}>{story()}</Formik>,

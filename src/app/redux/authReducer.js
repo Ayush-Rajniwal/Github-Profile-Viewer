@@ -1,24 +1,31 @@
-import initialState from '@redux/store';
-import { LOGIN_USER, TOGGLE_NAV } from '@redux/actionTypes';
+import { LOGIN_USER, SAVE_USER } from '@redux/actionTypes';
 
-function reducer(state = initialState, action) {
+const authInitialState = {
+    isLoggedIn: false,
+    loggedInToken: '',
+    profile: {
+        avatar: '',
+        username: '',
+        location: '',
+        following: '',
+        followers: '',
+        bio: '',
+        link: '',
+        blog: '',
+        email: '',
+    },
+};
+
+function authReducer(state = authInitialState, action) {
     const { payload } = action;
-
     switch (action.type) {
-    case TOGGLE_NAV:
-        return {
-            ...state,
-            isNavOpen: !state.isNavOpen,
-        };
-
     case LOGIN_USER:
         return {
             ...state,
-            isLoggedIn: true,
-            loggedInToken: payload.password,
+            isLoggedIn: !state.isLoggedIn,
         };
 
-    case 'SAVE_USER':
+    case SAVE_USER:
         return {
             ...state,
             profile: {
@@ -38,4 +45,4 @@ function reducer(state = initialState, action) {
     }
 }
 
-export default reducer;
+export default authReducer;

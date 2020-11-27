@@ -1,9 +1,9 @@
-import axios from "axios";
-import { API_URL } from "@constants/variables";
+import axios from 'axios';
+import { API_URL } from '@constants/variables';
 
 const GET = (endpoint, payload) => {
-    let config = {
-        method: "get",
+    const config = {
+        method: 'get',
         url: `${API_URL}${endpoint}`,
     };
 
