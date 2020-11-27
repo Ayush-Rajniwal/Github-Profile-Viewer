@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-function LoginContainer(props) {
+function LoginContainer() {
     return (
         <div>
-            {props.location.state ? props.location.state.message : "Login page"}
+            Login page
         </div>
     );
 }

@@ -1,4 +1,4 @@
-import { TOGGLE_NAV } from "@redux/actionTypes";
+import { TOGGLE_NAV } from '@redux/actionTypes';
 
 const uiInitialState = {
     isNavOpen: false,
@@ -6,14 +6,14 @@ const uiInitialState = {
 
 function uiReducer(state = uiInitialState, action) {
     switch (action.type) {
-        case TOGGLE_NAV:
-            return {
-                ...state,
-                isNavOpen: !state.isNavOpen,
-            };
+    case TOGGLE_NAV:
+        return {
+            ...state,
+            isNavOpen: !state.isNavOpen,
+        };
 
-        default:
-            return state;
+    default:
+        return state;
     }
 }
 
