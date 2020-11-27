@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, BrowserRouter as Router, NavLink } from "react-router-dom";
+import { BrowserRouter as Router, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 import MyRoute from "@src/routes";
@@ -10,8 +10,8 @@ import { TOGGLE_NAV, LOGIN_USER } from "@redux/actionTypes";
 function NavContainer() {
     const { t } = useTranslation();
 
-    const isNavOpen = useSelector((state) => state.isNavOpen);
-    const isLoggedIn = useSelector((state) => state.isLoggedIn);
+    const isNavOpen = useSelector((state) => state.ui.isNavOpen);
+    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
     const dispatch = useDispatch();
 
     const toggleNav = () => {
@@ -24,27 +24,27 @@ function NavContainer() {
 
     return (
         <Router>
-            <nav className={"nav"}>
-                <Link className={"nav__logo"} to="/">
-                    <img width="100%" src={logo} alt="logo" />
-                </Link>
-                <Link to={"#"} className={"nav__hamburger"} onClick={toggleNav}>
-                    <i className={"icon icon-align-right"}></i>
-                </Link>
+            <nav className="nav">
+                <NavLink className="nav__logo" to="/">
+                    <img src={logo} alt="logo" />
+                </NavLink>
+                <NavLink to="#" className="nav__hamburger" onClick={toggleNav}>
+                    <i className="icon icon-align-right"></i>
+                </NavLink>
                 <ul
                     className={
                         "nav__links" + (isNavOpen ? " nav__links--active" : "")
                     }
                 >
                     <li>
-                        <NavLink className={"nav__link"} to="/search">
-                            <i className={"icon icon-search"}></i>
+                        <NavLink className="nav__link" to="/search">
+                            <i className="icon icon-search"></i>
                         </NavLink>
                     </li>
                     {isLoggedIn ? (
                         <li>
-                            <NavLink className={"nav__link"} to="/connect">
-                                <i className={"icon icon-user-add"}></i>
+                            <NavLink className="nav__link" to="/connect">
+                                <i className="icon icon-user-add"></i>
                             </NavLink>
                         </li>
                     ) : null}
@@ -52,7 +52,7 @@ function NavContainer() {
                     <li>
                         <Button
                             onClick={loginUser}
-                            className={"nav__link button button--login"}
+                            className="nav__link button button--login"
                             to="/login"
                         >
                             {isLoggedIn ? t("Logout") : t("Login")}
