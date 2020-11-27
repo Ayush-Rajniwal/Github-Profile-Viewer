@@ -1,42 +1,34 @@
-import initialState from './store';
+import { TOGGLE_NAV, SAVE_USER } from '@redux/actionTypes';
 
-function reducer(state = initialState, action) {
+const uiInitialState = {
+    isNavOpen: false,
+    profile: {
+        avatar: '',
+        username: '',
+        location: '',
+        following: '',
+        followers: '',
+        bio: '',
+        link: '',
+        blog: '',
+        email: '',
+    },
+};
+
+function uiReducer(state = uiInitialState, action) {
     const { payload } = action;
     switch (action.type) {
-    case 'TOGGLE_NAV':
+    case TOGGLE_NAV:
         return {
             ...state,
             isNavOpen: !state.isNavOpen,
         };
 
-    case 'LOGIN_USER':
-        return {
-            ...state,
-            isLoggedIn: true,
-            loggedInUser: {
-                token: payload.token,
-                name: payload.username,
-                avatar: payload.avatar,
-            },
-        };
-
-    case 'LOGOUT_USER':
-        return {
-            ...state,
-            isLoggedIn: false,
-            loggedInUser: {
-                token: '',
-                name: '',
-                avatar: '',
-            },
-        };
-
-    case 'SAVE_USER':
+    case SAVE_USER:
         return {
             ...state,
             profile: {
                 avatar: payload.data.avatar_url,
-                name: payload.data.name,
                 username: payload.data.login,
                 location: payload.data.location,
                 following: payload.data.following,
@@ -47,9 +39,10 @@ function reducer(state = initialState, action) {
                 email: payload.data.email,
             },
         };
+
     default:
         return state;
     }
 }
 
-export default reducer;
+export default uiReducer;
