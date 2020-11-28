@@ -1,24 +1,29 @@
 .button {
     font-size: 1.6rem;
+    border: none;
     border-radius: 2rem;
     padding: 1.2rem;
-    border: none;
     cursor: pointer;
     font-weight: 600;
+    transition: background 0.8s;
+    background: $primary-text;
+    color: $primary-bg;
 
-    &--primary {
-        background: $primary-text;
-        color: $primary-bg;
+    &--login{
         width: 100%;
     }
 
-    &--follow {
-        background: $primary-text;
-        color: $primary-bg;
+    &__close{
+        font-size: 1rem;
+        border: none;
+        width: unset;
+        transition: none;
     }
 
-    &--following {
-        background: $white;
-        color: $primary-bg;
+    &:active {
+        background-color: $ripple-color;
+        background-size: 100%;
+        transition: all 0.1s;
+        transform: scale(0.95);
     }
 }

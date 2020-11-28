@@ -1,5 +1,6 @@
 .connect {
-    @include flex(flex-start, center, column);
+    @include flex(center, center, column);
+    padding: 30rem 0 0 0;
     font-size: 1.6rem;
     background: $secondary-bg;
     color: $primary-text;
@@ -7,6 +8,7 @@
     overflow-y: scroll;
 
     @include media($mediaSM) {
+        padding: 10rem 0 0 0;
         overflow-y: auto;
         height: 100%;
     }
