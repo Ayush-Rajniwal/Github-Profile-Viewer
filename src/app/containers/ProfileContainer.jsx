@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import apiCall from '@services/apiCall';
 import Loader from '@components/Loader';
 import { SAVE_USER, START_LOADING, STOP_LOADING } from '@redux/actionTypes';
+import { USERS_URL, FOLLOWING_URL } from '@constants/variables';
 
 function ProfileContainer({
     match: {
@@ -32,7 +33,7 @@ function ProfileContainer({
             type: START_LOADING,
         });
 
-        apiCall('GET', `/users/${username}`, {
+        apiCall('GET', `${USERS_URL}/${username}`, {
             isAuthenticated: isLoggedIn,
             password: loggedInUser.token,
         })
@@ -59,7 +60,7 @@ function ProfileContainer({
             type: START_LOADING,
         });
 
-        apiCall('GET', `/users/${username}/followers?per_page=5`, {
+        apiCall('GET', `${USERS_URL}/${username}/followers?per_page=5`, {
             isAuthenticated: isLoggedIn,
             password: loggedInUser.token,
         })
@@ -88,7 +89,7 @@ function ProfileContainer({
             type: START_LOADING,
         });
 
-        apiCall('GET', `/users/${username}/following?per_page=5`, {
+        apiCall('GET', `${USERS_URL}/${username}/following?per_page=5`, {
             isAuthenticated: isLoggedIn,
             password: loggedInUser.token,
         })
@@ -123,7 +124,7 @@ function ProfileContainer({
     const followBtn = (e) => {
         const { id } = e.target.dataset;
 
-        apiCall('PUT', `/user/following/${id}`, {
+        apiCall('PUT', `${FOLLOWING_URL}/${id}`, {
             isAuthenticated: isLoggedIn,
             password: loggedInUser.token,
         }).then(() => {

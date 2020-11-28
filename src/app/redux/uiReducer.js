@@ -1,10 +1,16 @@
 import {
-    TOGGLE_NAV, SAVE_USER, START_LOADING, STOP_LOADING,
+    TOGGLE_NAV,
+    SAVE_USER,
+    START_LOADING,
+    STOP_LOADING,
+    LANG_EN,
+    LANG_HI,
 } from '@redux/actionTypes';
 
 const uiInitialState = {
     isNavOpen: false,
     isLoading: false,
+    lang: 'en',
     profile: {
         avatar: '',
         username: '',
@@ -55,6 +61,18 @@ function uiReducer(state = uiInitialState, action) {
         return {
             ...state,
             isLoading: false,
+        };
+
+    case LANG_EN:
+        return {
+            ...state,
+            lang: 'en',
+        };
+
+    case LANG_HI:
+        return {
+            ...state,
+            lang: 'hi',
         };
 
     default:

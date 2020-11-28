@@ -11,7 +11,6 @@ function SearchBar({ onChange }) {
                 type="search"
                 placeholder="Enter username"
             />
-            <i className="icon icon-search" />
         </div>
     );
 }
