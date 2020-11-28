@@ -1,6 +1,6 @@
 .loader {
-  border: 1.6rem solid #f3f3f3; /* Light grey */
-  border-top: 1.6rem solid #3498db; /* Blue */
+  border: 1.6rem solid $white; 
+  border-top: 1.6rem solid $primary-text;
   border-radius: 50%;
   width: 12rem;
   height: 12rem;
