@@ -1,12 +1,12 @@
-import React from "react";
-import FollowCard from "../app/components/FollowCard";
+import React from 'react';
+import FollowCard from '@components/FollowCard';
 
 export default {
-    title: "Follow Card",
+    title: 'Follow Card',
     component: FollowCard,
 };
 
-export const FollowCard_Display = () => (
+export const FollowCardDisplay = () => (
     <FollowCard
         avatar="https://avatars3.githubusercontent.com/u/54205?s=460&v=4"
         username="username"

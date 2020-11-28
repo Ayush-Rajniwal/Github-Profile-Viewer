@@ -3,6 +3,10 @@
         border: 0.2rem solid $primary-text;
         border-radius: 100%;
         overflow: hidden;
+
+        &--hidden{
+            display: none;
+        }
     }
     &__img {
         width: 100%;

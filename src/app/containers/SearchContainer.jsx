@@ -1,18 +1,20 @@
-import React, { useState } from "react";
-import List from "../components/List";
-import SearchBar from "../components/SearchBar";
-import axios from "axios";
+import React, { useState } from 'react';
+import List from '@components/List';
+import SearchBar from '@components/SearchBar';
+import apiCall from '@services/apiCall';
+import { useSelector } from 'react-redux';
 
 function SearchContainer() {
     const [searchUser, setSearchUser] = useState([]);
-    let searchUserCount = 5;
+    const loggedInUser = useSelector((state) => state.auth.loggedInUser);
+    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
-    const debounce = function (func, d) {
+    const searchUserCount = 5;
+
+    const debounce = (func, d) => {
         let timer;
-        return function () {
-            let context = this;
-            let args = arguments;
-
+        return (...args) => {
+            const context = this;
             clearTimeout(timer);
 
             timer = setTimeout(() => {
@@ -21,26 +23,29 @@ function SearchContainer() {
         };
     };
     const fetchSearch = (e) => {
-        let username = e.target.value;
+        const username = e.target.value;
 
         if (username.length === 0) {
             setSearchUser([]);
             return;
         }
 
-        let config = {
-            method: "get",
-            url: `https://api.github.com/search/users?q=${username}&per_page=${searchUserCount}`,
-        };
-
-        axios(config)
-            .then(function (response) {
-                let a = response.data.items.map((item) => {
-                    return { avatar: item.avatar_url, username: item.login };
-                });
-                setSearchUser(a);
+        apiCall(
+            'GET',
+            `/search/users?q=${username}&per_page=${searchUserCount}`,
+            {
+                isAuthenticated: isLoggedIn,
+                password: loggedInUser.token,
+            },
+        )
+            .then((response) => {
+                const userList = response.data.items.map((item) => ({
+                    avatar: item.avatar_url,
+                    username: item.login,
+                }));
+                setSearchUser(userList);
             })
-            .catch(function (error) {
+            .catch(() => {
                 setSearchUser([]);
             });
     };
