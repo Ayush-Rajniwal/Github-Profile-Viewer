@@ -25,6 +25,7 @@ function FollowCard({ avatar, username, onClick }) {
                 <div className="followCard__icons">
                     <Button
                         id="follow-btn"
+                        type="button"
                         className="button button--follow"
                         data-id={username}
                     >
@@ -33,6 +34,7 @@ function FollowCard({ avatar, username, onClick }) {
                         </i>
                     </Button>
                     <Button
+                        type="button"
                         id="following-btn"
                         className="button button--follow"
                         data-id={username}
