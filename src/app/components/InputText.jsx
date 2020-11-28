@@ -7,11 +7,11 @@ function InputText({
 }) {
     return (
         <div className="form__field">
-            {label ? (
+            {label && (
                 <label className="form__text--label" htmlFor={name}>
                     {label}
                 </label>
-            ) : null}
+            )}
             <Field
                 className="form__input--text"
                 type={type}

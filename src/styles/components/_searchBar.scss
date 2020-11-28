@@ -1,8 +1,10 @@
 .searchBar {
     font-size: 1.6rem;
+    margin: 0 0 2rem 0;
     &__inp {
         width: 30rem;
         padding: 1rem;
+        outline: none;
     }
     .icon {
         position: relative;

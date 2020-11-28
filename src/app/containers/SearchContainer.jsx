@@ -2,12 +2,17 @@ import React, { useState } from 'react';
 import List from '@components/List';
 import SearchBar from '@components/SearchBar';
 import apiCall from '@services/apiCall';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { SEARCH_URL } from '@constants/variables';
+import Loader from '@components/Loader';
+import { START_LOADING, STOP_LOADING } from '@redux/actionTypes';
 
 function SearchContainer() {
     const [searchUser, setSearchUser] = useState([]);
     const loggedInUser = useSelector((state) => state.auth.loggedInUser);
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+    const dispatch = useDispatch();
+    const isLoading = useSelector((state) => state.ui.isLoading);
 
     const searchUserCount = 5;
 
@@ -24,15 +29,21 @@ function SearchContainer() {
     };
     const fetchSearch = (e) => {
         const username = e.target.value;
+        dispatch({
+            type: START_LOADING,
+        });
 
         if (username.length === 0) {
             setSearchUser([]);
+            dispatch({
+                type: STOP_LOADING,
+            });
             return;
         }
 
         apiCall(
             'GET',
-            `/search/users?q=${username}&per_page=${searchUserCount}`,
+            `${SEARCH_URL}?q=${username}&per_page=${searchUserCount}`,
             {
                 isAuthenticated: isLoggedIn,
                 password: loggedInUser.token,
@@ -44,9 +55,15 @@ function SearchContainer() {
                     username: item.login,
                 }));
                 setSearchUser(userList);
+                dispatch({
+                    type: STOP_LOADING,
+                });
             })
             .catch(() => {
                 setSearchUser([]);
+                dispatch({
+                    type: STOP_LOADING,
+                });
             });
     };
 
@@ -56,10 +73,11 @@ function SearchContainer() {
             <div className="search__container">
                 <SearchBar onChange={changeHandler} />
                 {searchUser.length === 0 ? (
-                    <h1>No result found</h1>
+                    !isLoading && <h1>No result found</h1>
                 ) : (
-                    <List data={searchUser} />
+                    !isLoading && <List data={searchUser} />
                 )}
+                {isLoading && <Loader />}
             </div>
         </div>
     );

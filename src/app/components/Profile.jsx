@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 
 function Profile({ profile, toggleFollowerList, toggleFollowingList }) {
     const { t } = useTranslation();
-
     return (
         <div className="profile__container">
             <div className="profile__left-section">
@@ -28,7 +27,7 @@ function Profile({ profile, toggleFollowerList, toggleFollowingList }) {
                         && profile.loggedInUserName !== profile.username && (
                         <Button
                             type="button"
-                            id="follow-btn-profile"
+                            id="profile-follow-btn"
                             onClick={profile.followBtn}
                             data-id={profile.username}
                             className="button u__margin--tb"
@@ -43,7 +42,7 @@ function Profile({ profile, toggleFollowerList, toggleFollowingList }) {
                     <h1 className="u__text--center">{profile.name}</h1>
 
                     <div className="profile__details">
-                        {profile.location ? (
+                        {profile.location && (
                             <IconText
                                 className="u__text--center"
                                 text={
@@ -57,7 +56,7 @@ function Profile({ profile, toggleFollowerList, toggleFollowingList }) {
                             >
                                 <i className="icon icon-location " />
                             </IconText>
-                        ) : null}
+                        )}
                         <Button
                             type="button"
                             id="followers-btn"
@@ -122,9 +121,25 @@ function Profile({ profile, toggleFollowerList, toggleFollowingList }) {
 }
 
 Profile.propTypes = {
-    profile: PropTypes.instanceOf(Object).isRequired,
+    profile: PropTypes.shape({
+        avatar: PropTypes.string.isRequired,
+        link: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        location: PropTypes.string,
+        followers: PropTypes.number.isRequired,
+        following: PropTypes.number.isRequired,
+        email: PropTypes.string,
+        blog: PropTypes.string,
+        bio: PropTypes.string,
+        username: PropTypes.string.isRequired,
+        isLoggedIn: PropTypes.bool.isRequired,
+        loggedInUserName: PropTypes.string.isRequired,
+        followBtn: PropTypes.func.isRequired,
+    }).isRequired,
     toggleFollowerList: PropTypes.func.isRequired,
     toggleFollowingList: PropTypes.func.isRequired,
 };
 
+Profile.defaultProps = {
+};
 export default Profile;
