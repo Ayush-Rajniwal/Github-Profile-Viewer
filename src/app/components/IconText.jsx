@@ -25,7 +25,7 @@ IconText.propTypes = {
 };
 
 IconText.defaultProps = {
-    onClick: null,
+    onClick: () => {},
 };
 
 export default IconText;
