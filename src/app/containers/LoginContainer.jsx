@@ -1,9 +1,10 @@
 import React from 'react';
+import LoginForm from '@components/LoginForm';
 
 function LoginContainer() {
     return (
-        <div>
-            Login page
+        <div className="login">
+            <LoginForm />
         </div>
     );
 }

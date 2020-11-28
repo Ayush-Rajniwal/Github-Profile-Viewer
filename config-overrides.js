@@ -10,6 +10,8 @@ module.exports = function override(config) {
         '@styles': 'src/styles',
         '@provider': 'src/providers',
         '@locales': 'src/locales',
+        '@constants': 'src/constants',
+        '@services': 'src/services',
     })(config);
 
     return config;

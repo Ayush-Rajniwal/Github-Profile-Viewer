@@ -2,5 +2,9 @@
     "Page_title": "Github Profile Viewer",
     "Page_subtitle": "Search, Follow & View Profiles",
     "Login":"Login",
-    "Logout":"Logout"
+    "Logout":"Logout",
+    "Username":"Username",
+    "Password":"Password",
+    "Token":"Token" ,
+    "Profile Name":"Profile Name"
 }
