@@ -29,7 +29,7 @@ function ProfileContainer({
 
     const fetchUser = useCallback(() => {
         dispatch({
-            type: 'START_LOADING',
+            type: START_LOADING,
         });
 
         apiCall('GET', `/users/${username}`, {
