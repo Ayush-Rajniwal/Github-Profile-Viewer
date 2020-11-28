@@ -52,7 +52,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
     to: '#',
-    onClick: null,
+    onClick: () => {},
 };
 
 export default Button;

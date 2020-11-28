@@ -11,15 +11,19 @@ function Avatar({ className, img }) {
 
     return (
         <>
-            <div className={`avatar__wrapper ${!loadingImage ? 'avatar__wrapper--hidden' : ''} ${className}`}>
-                <img
-                    className="avatar__img"
-                    src={loadingGIF}
-                    alt="Profile"
-                />
+            <div
+                className={`avatar__wrapper ${
+                    !loadingImage ? 'avatar__wrapper--hidden' : ''
+                } ${className}`}
+            >
+                <img className="avatar__img" src={loadingGIF} alt="Profile" />
             </div>
 
-            <div className={`avatar__wrapper  ${loadingImage ? 'avatar__wrapper--hidden' : ''}  ${className}`}>
+            <div
+                className={`avatar__wrapper  ${
+                    loadingImage ? 'avatar__wrapper--hidden' : ''
+                }  ${className}`}
+            >
                 <img
                     className="avatar__img"
                     src={img}
@@ -37,7 +41,7 @@ Avatar.propTypes = {
 };
 
 Avatar.defaultProps = {
-    className: null,
+    className: '',
 };
 
 export default Avatar;

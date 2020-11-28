@@ -16,6 +16,7 @@ const uiInitialState = {
         link: '',
         blog: '',
         email: '',
+        name: '',
     },
 };
 
@@ -42,6 +43,7 @@ function uiReducer(state = uiInitialState, action) {
                 link: payload.data.html_url,
                 blog: payload.data.blog,
                 email: payload.data.email,
+                name: payload.data.name,
             },
         };
 
