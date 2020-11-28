@@ -1,42 +1,55 @@
-import React, { useEffect, useState, useCallback } from "react";
-import FollowCard from "../components/FollowCard";
-import Button from "../components/Button";
-import { useTranslation } from "react-i18next";
-import axios from "axios";
-import { useSelector } from "react-redux";
+import React, {
+    useEffect, useState, useCallback,
+} from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector, useDispatch } from 'react-redux';
+import Button from '@components/Button';
+import FollowCard from '@components/FollowCard';
+import Loader from '@components/Loader';
+import { FOLLOW, REMOVE } from '@constants/variables';
+import { START_LOADING, STOP_LOADING } from '@redux/actionTypes';
+import apiCall from '@services/apiCall';
 
 function ConnectContainer() {
+    const dispatch = useDispatch();
     const [userList, setUserList] = useState([]);
     const [lastIndex, setLastIndex] = useState(30);
     const [error, setError] = useState(false);
-    let userPerPage = 3;
-    const token = useSelector((state) => state.loggedInUser.token);
+    const userPerPage = 3;
+    const token = useSelector((state) => state.auth.loggedInUser.token);
     const { t } = useTranslation();
+    const isLoading = useSelector((state) => state.ui.isLoading);
+    const loggedInUser = useSelector((state) => state.auth.loggedInUser);
 
     const fetchSuggestions = useCallback(
         (since = 0) => {
-            let config = {
-                method: "get",
-                url: `https://api.github.com/users?since=${since}&per_page=30`,
-                headers: {
-                    Authorization: `token ${token}`,
-                },
-            };
+            dispatch({
+                type: START_LOADING,
+            });
 
-            axios(config)
-                .then(function (response) {
-                    response.data = response.data.map(function (user) {
-                        return { login: user.login, avatar: user.avatar_url };
-                    });
+            apiCall('GET', `/users?since=${since}&per_page=30`, {
+                isAuthenticated: true,
+                password: loggedInUser.token,
+            })
+                .then((response) => {
+                    response.data = response.data.map((user) => ({
+                        login: user.login,
+                        avatar: user.avatar_url,
+                    }));
                     setUserList([...response.data]);
                     setError(false);
+                    dispatch({
+                        type: STOP_LOADING,
+                    });
                 })
-                .catch(function (error) {
-                    console.log(error);
+                .catch(() => {
                     setError(true);
+                    dispatch({
+                        type: STOP_LOADING,
+                    });
                 });
         },
-        [token]
+        [token],
     );
 
     useEffect(() => {
@@ -57,45 +70,51 @@ function ConnectContainer() {
 
     const clickHandler = (e) => {
         emptyCheck();
-        let id = e.target.dataset.id;
-        let config = {
-            method: "PUT",
-            url: `https://api.github.com/user/following/${id}`,
-            headers: {
-                Authorization: `token ${token}`,
-            },
-        };
+        const { id } = e.target.dataset;
 
         switch (e.target.innerText) {
-            case "Follow":
-                axios(config)
-                    .then(function (response) {
-                        setError(false);
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                        setError(true);
-                    });
-            case "Remove":
-                setUserList(userList.filter((ele) => id !== ele.login));
-                break;
-            default:
-                break;
+        case FOLLOW:
+            apiCall('PUT', `/user/following/${id}`, {
+                isAuthenticated: true,
+                password: loggedInUser.token,
+            })
+                .then(() => {
+                    setError(false);
+                })
+                .catch(() => {
+                    setError(true);
+                });
+            setUserList(userList.filter((ele) => id !== ele.login));
+            break;
+        case REMOVE:
+            setUserList(userList.filter((ele) => id !== ele.login));
+            break;
+        default:
+            break;
         }
     };
 
+    if (isLoading) {
+        return (
+            <div className="connect">
+                <Loader />
+            </div>
+        );
+    }
     return (
         <div className="connect">
             {error ? (
-                <h1>{t("Unable to fetch the user :(")}</h1>
+                <h1>{t('Unable to fetch the user :(')}</h1>
             ) : (
                 <>
-                    <h1>{t("Connect more")}</h1>
+                    <h1>{t('Connect more')}</h1>
                     <Button
+                        type="button"
+                        id="refresh-btn"
                         onClick={refresh}
                         className="connect__btn button--primary"
                     >
-                        {t("Refresh")}
+                        {t('Refresh')}
                     </Button>
                     {userList.map((user, index) => {
                         if (index > userPerPage - 1) return null;

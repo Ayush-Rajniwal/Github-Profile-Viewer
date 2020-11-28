@@ -1,9 +1,9 @@
-import React from "react";
-import LoginForm from "../components/LoginForm";
+import React from 'react';
+import LoginForm from '@components/LoginForm';
 
-function LoginContainer(props) {
+function LoginContainer() {
     return (
-        <div className={"login"}>
+        <div className="login">
             <LoginForm />
         </div>
     );
