@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 function SearchBar({ onChange }) {
     return (
@@ -9,9 +10,12 @@ function SearchBar({ onChange }) {
                 type="search"
                 placeholder="Enter username"
             />
-            <i className="icon icon-search"></i>
+            <i className="icon icon-search" />
         </div>
     );
 }
 
+SearchBar.propTypes = {
+    onChange: PropTypes.func.isRequired,
+};
 export default SearchBar;
