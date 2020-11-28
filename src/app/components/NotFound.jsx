@@ -7,9 +7,9 @@ function NotFound() {
     return (
         <div className="notFound u__text--center">
             <div className="notFound__title">404</div>
-            <div className="notFound__msg">{t('Profile not found!!')}</div>
+            <div className="notFound__msg">{t('Prof_not_found')}</div>
             <Link className="notFound__link" to="/">
-                {t('Back to Home')}
+                {t('Back_home')}
             </Link>
         </div>
     );

@@ -7,7 +7,7 @@
     "Password":"Password",
     "Token":"Token" ,
     "Profile Name":"Profile Name",
-    "Unable to fetch the user :(":"Unable to fetch the user :(",
+    "Unable_fetch_user":"Unable to fetch the user :(",
     "Connect more":"Connect more",
     "Refresh":"Refresh",
     "Follow":"Follow",
@@ -16,6 +16,6 @@
     "Following":"Following",
     "Email":"Email",
     "Blog":"Blog",
-    "Profile not found!!":"Profile not found!!",
-    "Back to Home":"Back to Home"
+    "Prof_not_found":"Profile not found!!",
+    "Back_home":"Back to Home"
 }
