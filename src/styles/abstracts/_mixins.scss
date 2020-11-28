@@ -1,0 +1,47 @@
+@mixin media($width_min: $mediaXS, $width_max: $mediaMAX) {
+    @media (min-width: #{$width_min}) and (max-width: $width_max - 1) {
+        @content;
+    }
+}
+
+@mixin mediaXS() {
+    @media (min-width: $mediaXS) and (max-width: $mediaSM - 1) {
+        @content;
+    }
+}
+
+@mixin mediaSM() {
+    @media (min-width: #{$mediaSM}) and (max-width: $mediaMD - 1) {
+        @content;
+    }
+}
+
+@mixin mediaMD() {
+    @media (min-width: #{$mediaMD}) and (max-width: $mediaLG - 1) {
+        @content;
+    }
+}
+
+@mixin mediaLG() {
+    @media (min-width: #{$mediaLG}) and (max-width: $mediaMAX) {
+        @content;
+    }
+}
+
+// Flex
+@mixin flex($justify: start, $align: start, $direction: row) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
+
+@mixin box-shadow($shadow) {
+    -webkit-box-shadow: $shadow;
+    -moz-box-shadow: $shadow;
+    box-shadow: $shadow;
+}
+
+@mixin lgrad($grad...) {
+    background: linear-gradient($grad);
+}

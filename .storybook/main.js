@@ -1,0 +1,21 @@
+const path = require('path');
+const custom = require('./webpack.config.js');
+console.log();
+module.exports = {
+    stories: [
+        '../src/**/*.stories.mdx',
+        '../src/**/*.stories.@(js|jsx|ts|tsx)',
+        '../src/stories/*.stories.@(js|jsx|ts|tsx)',
+    ],
+    addons: [
+        '@storybook/addon-links',
+        '@storybook/addon-essentials',
+        '@storybook/preset-create-react-app',
+    ],
+    webpackFinal: (config) => {
+        return {
+            ...config,
+            resolve: { ...config.resolve, ...custom.resolve },
+        };
+    },
+};
