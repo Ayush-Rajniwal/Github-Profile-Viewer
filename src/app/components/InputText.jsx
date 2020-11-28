@@ -1,7 +1,10 @@
-import React from "react";
-import { Field, ErrorMessage } from "formik";
+import React from 'react';
+import { Field, ErrorMessage } from 'formik';
+import PropTypes from 'prop-types';
 
-function InputText({ name, label, type, placeholder }) {
+function InputText({
+    name, label, type, placeholder,
+}) {
     return (
         <div className="form__field">
             {label ? (
@@ -24,5 +27,12 @@ function InputText({ name, label, type, placeholder }) {
         </div>
     );
 }
+
+InputText.propTypes = {
+    name: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    placeholder: PropTypes.string.isRequired,
+};
 
 export default InputText;
