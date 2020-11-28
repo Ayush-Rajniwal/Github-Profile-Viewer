@@ -21,5 +21,7 @@
     &__text {
         padding: 0 1rem;
         width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
