@@ -1,12 +1,31 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-function IconText({ className, children, text }) {
+function IconText({
+    className, children, text, onClick,
+}) {
     return (
-        <div  className={`${className} it`}>
-            <div className="it__icon">{children}</div>
-            <div className="it__text">{text}</div>
+        <div
+            role="presentation"
+            onKeyDown={onClick}
+            onClick={onClick}
+            className={`${className} iconText`}
+        >
+            <div className="iconText__icon">{children}</div>
+            <div className="iconText__text">{text}</div>
         </div>
     );
 }
+
+IconText.propTypes = {
+    className: PropTypes.string.isRequired,
+    onClick: PropTypes.func,
+    text: PropTypes.string.isRequired,
+    children: PropTypes.node.isRequired,
+};
+
+IconText.defaultProps = {
+    onClick: null,
+};
 
 export default IconText;
