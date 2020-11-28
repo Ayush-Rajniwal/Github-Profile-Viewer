@@ -1,7 +1,10 @@
-import { TOGGLE_NAV, SAVE_USER } from '@redux/actionTypes';
+import {
+    TOGGLE_NAV, SAVE_USER, START_LOADING, STOP_LOADING,
+} from '@redux/actionTypes';
 
 const uiInitialState = {
     isNavOpen: false,
+    isLoading: false,
     profile: {
         avatar: '',
         username: '',
@@ -38,6 +41,18 @@ function uiReducer(state = uiInitialState, action) {
                 blog: payload.data.blog,
                 email: payload.data.email,
             },
+        };
+
+    case START_LOADING:
+        return {
+            ...state,
+            isLoading: true,
+        };
+
+    case STOP_LOADING:
+        return {
+            ...state,
+            isLoading: false,
         };
 
     default:

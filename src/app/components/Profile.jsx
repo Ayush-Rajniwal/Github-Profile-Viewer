@@ -44,7 +44,9 @@ function Profile({ profile, toggleFollowerList, toggleFollowingList }) {
                         {profile.location ? (
                             <IconText
                                 className="u__text--center"
-                                text={profile.location}
+                                text={
+                                    profile.location.length >= 10 ? `${profile.location.substring(0, 10)}...` : profile.location
+                                }
                             >
                                 <i className="icon icon-location " />
                             </IconText>
