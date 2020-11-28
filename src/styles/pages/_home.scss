@@ -1,0 +1,16 @@
+.home {
+    @include flex(center, center, column);
+    font-size: 1.6rem;
+    background: $secondary-bg;
+    color: $primary-text;
+    height: 100%;
+
+    &__title {
+        font-size: 4rem;
+        text-align: center;
+
+        @include media($mediaSM) {
+            font-size: 6rem;
+        }
+    }
+}

@@ -1,0 +1,4 @@
+.app {
+    @include flex(flex-start, stretch, column);
+    height: 100%;
+}
