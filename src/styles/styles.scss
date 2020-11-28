@@ -9,10 +9,13 @@
 @import "base/utils";
 
 @import "components/button";
+@import "components/form";
+@import "components/popup";
 
 @import "layout/navbar";
 @import "layout/app";
 
 @import "pages/home";
+@import "pages/login";
 
 @import "base/global";

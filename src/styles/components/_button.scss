@@ -4,10 +4,27 @@
     padding: 1.2rem;
     border: none;
     cursor: pointer;
-
-    &--login {
+    background-position: center;
+    transition: background 0.8s;
+    background: $primary-text;
+    color: $primary-bg;    
+    
+    &--primary {
         font-weight: 600;
-        background: $primary-text;
-        color: $primary-bg;
+        width: 100%;
+    }
+
+    &__close{
+        font-size: 1rem;
+        border: none;
+        width: unset;
+        transition: none;
+    }
+
+    &:active {
+        background-color: $ripple-color;
+        background-size: 100%;
+        transition: all 0.1s;
+        transform: scale(0.95);
     }
 }

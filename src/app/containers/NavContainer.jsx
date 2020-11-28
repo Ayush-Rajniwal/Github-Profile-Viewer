@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import MyRoute from '@src/routes';
 import logo from '@images/logo.svg';
 import Button from '@components/Button';
-import { TOGGLE_NAV, LOGIN_USER } from '@redux/actionTypes';
+import { TOGGLE_NAV } from '@redux/actionTypes';
 
 function NavContainer() {
     const { t } = useTranslation();
@@ -16,10 +16,6 @@ function NavContainer() {
 
     const toggleNav = () => {
         dispatch({ type: TOGGLE_NAV });
-    };
-
-    const loginUser = () => {
-        dispatch({ type: LOGIN_USER });
     };
 
     return (
@@ -37,7 +33,11 @@ function NavContainer() {
                     }`}
                 >
                     <li>
-                        <NavLink className="nav__link" to="/search">
+                        <NavLink
+                            id="search-btn"
+                            className="nav__link"
+                            to="/search"
+                        >
                             <i className="icon icon-search" />
                         </NavLink>
                     </li>
@@ -51,8 +51,9 @@ function NavContainer() {
 
                     <li>
                         <Button
-                            onClick={loginUser}
-                            className="nav__link button button--login"
+                            type="link"
+                            id="login-btn"
+                            className="nav__link button button--primary"
                             to="/login"
                         >
                             {isLoggedIn ? t('Logout') : t('Login')}
