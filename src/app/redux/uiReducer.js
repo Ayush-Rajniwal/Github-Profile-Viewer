@@ -1,10 +1,16 @@
 import {
-    TOGGLE_NAV, SAVE_USER, START_LOADING, STOP_LOADING,
+    TOGGLE_NAV,
+    SAVE_USER,
+    START_LOADING,
+    STOP_LOADING,
+    LANG_EN,
+    LANG_HI,
 } from '@redux/actionTypes';
 
 const uiInitialState = {
     isNavOpen: false,
     isLoading: false,
+    lang: 'en',
     profile: {
         avatar: '',
         username: '',
@@ -16,7 +22,6 @@ const uiInitialState = {
         link: '',
         blog: '',
         email: '',
-        name: '',
     },
 };
 
@@ -43,7 +48,6 @@ function uiReducer(state = uiInitialState, action) {
                 link: payload.data.html_url,
                 blog: payload.data.blog,
                 email: payload.data.email,
-                name: payload.data.name,
             },
         };
 
@@ -57,6 +61,18 @@ function uiReducer(state = uiInitialState, action) {
         return {
             ...state,
             isLoading: false,
+        };
+
+    case LANG_EN:
+        return {
+            ...state,
+            lang: 'en',
+        };
+
+    case LANG_HI:
+        return {
+            ...state,
+            lang: 'hi',
         };
 
     default:

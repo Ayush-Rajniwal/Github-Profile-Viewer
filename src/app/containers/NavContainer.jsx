@@ -7,6 +7,7 @@ import logo from '@images/logo.svg';
 import Button from '@components/Button';
 import Avatar from '@components/Avatar';
 import { TOGGLE_NAV, LOGOUT_USER } from '@redux/actionTypes';
+import SwitchButton from '@components/SwitchButton';
 
 function NavContainer() {
     const { t } = useTranslation();
@@ -47,6 +48,10 @@ function NavContainer() {
                         >
                             <i className="icon icon-search" />
                         </NavLink>
+                    </li>
+
+                    <li>
+                        <SwitchButton />
                     </li>
 
                     {isLoggedIn && (
