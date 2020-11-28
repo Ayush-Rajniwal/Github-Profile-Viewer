@@ -49,13 +49,13 @@ function NavContainer() {
                         </NavLink>
                     </li>
 
-                    {isLoggedIn ? (
+                    {isLoggedIn && (
                         <li>
                             <NavLink className="nav__link" to="/connect">
                                 <i className="icon icon-user-add" />
                             </NavLink>
                         </li>
-                    ) : null}
+                    )}
 
                     {isLoggedIn && (
                         <li>
