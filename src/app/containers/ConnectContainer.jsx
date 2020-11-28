@@ -6,7 +6,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import Button from '@components/Button';
 import FollowCard from '@components/FollowCard';
 import Loader from '@components/Loader';
-import { FOLLOW, REMOVE } from '@constants/variables';
+import {
+    FOLLOW, REMOVE, FOLLOWING_URL, USERS_URL,
+} from '@constants/variables';
 import { START_LOADING, STOP_LOADING } from '@redux/actionTypes';
 import apiCall from '@services/apiCall';
 
@@ -27,7 +29,7 @@ function ConnectContainer() {
                 type: START_LOADING,
             });
 
-            apiCall('GET', `/users?since=${since}&per_page=30`, {
+            apiCall('GET', `${USERS_URL}?since=${since}&per_page=30`, {
                 isAuthenticated: true,
                 password: loggedInUser.token,
             })
@@ -74,7 +76,7 @@ function ConnectContainer() {
 
         switch (e.target.innerText) {
         case FOLLOW:
-            apiCall('PUT', `/user/following/${id}`, {
+            apiCall('PUT', `${FOLLOWING_URL}/${id}`, {
                 isAuthenticated: true,
                 password: loggedInUser.token,
             })
@@ -104,7 +106,7 @@ function ConnectContainer() {
     return (
         <div className="connect">
             {error ? (
-                <h1>{t('Unable to fetch the user :(')}</h1>
+                <h1>{t('Unable_fetch_user')}</h1>
             ) : (
                 <>
                     <h1>{t('Connect more')}</h1>
