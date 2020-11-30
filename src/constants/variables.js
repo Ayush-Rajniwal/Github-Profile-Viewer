@@ -6,3 +6,5 @@ export const REMOVE = 'Remove';
 export const FOLLOWING_URL = '/user/following';
 export const USERS_URL = '/users';
 export const SEARCH_URL = '/search/users';
+export const EN = 'en';
+export const HI = 'hi';

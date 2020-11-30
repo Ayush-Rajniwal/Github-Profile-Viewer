@@ -6,4 +6,4 @@ export default {
     component: SearchBar,
 };
 
-export const Search = () => <SearchBar onChange="" />;
+export const Search = () => <SearchBar onChange={() => {}} />;

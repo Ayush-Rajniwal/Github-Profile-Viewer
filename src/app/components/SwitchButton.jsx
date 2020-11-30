@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { LANG_EN, LANG_HI } from '@redux/actionTypes';
+import { EN } from '@constants/variables';
 
 function SwitchButton() {
     const [checked, setChecked] = useState(false);
@@ -8,7 +9,7 @@ function SwitchButton() {
     const lang = useSelector((state) => state.ui.lang);
 
     useEffect(() => {
-        if (lang === 'en') setChecked(false);
+        if (lang === EN) setChecked(false);
         else setChecked(true);
     }, []);
 
