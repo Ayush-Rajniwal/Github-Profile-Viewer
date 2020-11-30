@@ -14,10 +14,13 @@
 @import "components/avatar";
 
 @import "components/followCard";
+@import "components/searchBar";
 @import "components/list";
 @import "components/iconText";
 @import "components/nf";
 @import "components/loader";
+@import "components/switchButton";
+
 
 @import "layout/navbar";
 @import "layout/app";
@@ -26,5 +29,6 @@
 @import "pages/login";
 @import "pages/profile";
 @import "pages/connect";
+@import "pages/search";
 
 @import "base/global";
