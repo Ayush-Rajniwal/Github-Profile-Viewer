@@ -3,7 +3,7 @@ import { Field, ErrorMessage } from 'formik';
 import PropTypes from 'prop-types';
 
 function InputText({
-    name, label, type, placeholder,
+    name, label, type, placeholder, ...rest
 }) {
     return (
         <div className="form__field">
@@ -18,6 +18,7 @@ function InputText({
                 id={name}
                 name={name}
                 placeholder={placeholder}
+                {...rest}
             />
             <ErrorMessage
                 name={name}
