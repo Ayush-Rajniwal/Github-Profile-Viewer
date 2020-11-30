@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@components/Button';
 
-function Popup({ title, message, onClick }) {
+function Popup({
+    title, onClick, children,
+}) {
     return (
         <div className="popup">
             <div className="popup__content u__shadow">
@@ -20,7 +22,7 @@ function Popup({ title, message, onClick }) {
                         />
                     </Button>
                 </div>
-                <div className="popup__message">{message}</div>
+                <div className="popup__message">{children}</div>
             </div>
         </div>
     );
@@ -28,7 +30,7 @@ function Popup({ title, message, onClick }) {
 
 Popup.propTypes = {
     title: PropTypes.string.isRequired,
-    message: PropTypes.string.isRequired,
+    children: PropTypes.node.isRequired,
     onClick: PropTypes.func.isRequired,
 };
 

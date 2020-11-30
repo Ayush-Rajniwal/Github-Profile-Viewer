@@ -1,16 +1,15 @@
 .button {
     font-size: 1.6rem;
+    border: none;
     border-radius: 2rem;
     padding: 1.2rem;
-    border: none;
     cursor: pointer;
-    background-position: center;
+    font-weight: 600;
     transition: background 0.8s;
     background: $primary-text;
-    color: $primary-bg;    
-    
-    &--primary {
-        font-weight: 600;
+    color: $primary-bg;
+
+    &--login{
         width: 100%;
     }
 

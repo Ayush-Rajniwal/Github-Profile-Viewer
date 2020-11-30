@@ -6,4 +6,4 @@ export default {
     component: Popup,
 };
 
-export const PopupDisplay = () => <Popup title="Title" message="Message" />;
+export const PopupDisplay = () => <Popup title="Title">Message</Popup>;

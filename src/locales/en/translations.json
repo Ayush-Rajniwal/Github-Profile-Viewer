@@ -6,5 +6,12 @@
     "Username":"Username",
     "Password":"Password",
     "Token":"Token" ,
-    "Profile Name":"Profile Name"
+    "Profile Name":"Profile Name",
+    "Follow":"Follow",
+    "Followers":"Followers",
+    "Following":"Following",
+    "Email":"Email",
+    "Blog":"Blog",
+    "Profile not found!!":"Profile not found!!",
+    "Back to Home":"Back to Home"
 }

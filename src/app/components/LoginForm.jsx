@@ -4,12 +4,15 @@ import * as Yup from 'yup';
 import InputText from '@components/InputText';
 import Button from '@components/Button';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Popup from '@components/Popup';
-import GET from '@services/apiCall';
+import apiCall from '@services/apiCall';
+import { LOGIN_USER, SAVE_USER } from '@redux/actionTypes';
 
 function LoginForm() {
     const { t } = useTranslation();
+    const history = useHistory();
 
     const [loginError, setLoginError] = useState(false);
 
@@ -26,16 +29,21 @@ function LoginForm() {
     const dispatch = useDispatch();
 
     const onSubmit = (values) => {
-        const apiValue = GET('/user', {
+        apiCall('GET', '/user', {
             isAuthenticated: true,
             password: values.password,
-        });
-
-        apiValue
-            .then((response) => {
-                dispatch({ type: 'LOGIN_USER', payload: values });
-                dispatch({ type: 'SAVE_USER', payload: response });
-            })
+        }).then((response) => {
+            dispatch({
+                type: LOGIN_USER,
+                payload: {
+                    token: values.password,
+                    username: response.data.login,
+                    avatar: response.data.avatar_url,
+                },
+            });
+            dispatch({ type: SAVE_USER, payload: response });
+            history.push(`/${response.data.login}`);
+        })
             .catch(() => {
                 setLoginError(true);
             });
@@ -46,7 +54,9 @@ function LoginForm() {
     };
 
     return loginError ? (
-        <Popup title="Error" message="Invalid Token!!" onClick={popupClose} />
+        <Popup title="Error" onClick={popupClose}>
+            Invalid Token!!
+        </Popup>
     ) : (
         <Formik
             initialValues={initialValues}
@@ -69,7 +79,7 @@ function LoginForm() {
                 <Button
                     id="login-submit"
                     type="submit"
-                    className="button--primary u__margin--tb u__uppercase button__ripple"
+                    className="button--login u__margin--tb u__uppercase button__ripple"
                 >
                     {t('Login')}
                 </Button>

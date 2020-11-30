@@ -1,18 +1,11 @@
-import { LOGIN_USER, SAVE_USER } from '@redux/actionTypes';
+import { LOGIN_USER, LOGOUT_USER } from '@redux/actionTypes';
 
 const authInitialState = {
     isLoggedIn: false,
-    loggedInToken: '',
-    profile: {
+    loggedInUser: {
+        token: '',
+        name: '',
         avatar: '',
-        username: '',
-        location: '',
-        following: '',
-        followers: '',
-        bio: '',
-        link: '',
-        blog: '',
-        email: '',
     },
 };
 
@@ -23,21 +16,21 @@ function authReducer(state = authInitialState, action) {
         return {
             ...state,
             isLoggedIn: !state.isLoggedIn,
+            loggedInUser: {
+                token: payload.token,
+                name: payload.username,
+                avatar: payload.avatar,
+            },
         };
 
-    case SAVE_USER:
+    case LOGOUT_USER:
         return {
             ...state,
-            profile: {
-                avatar: payload.data.avatar_url,
-                username: payload.data.login,
-                location: payload.data.location,
-                following: payload.data.following,
-                followers: payload.data.followers,
-                bio: payload.data.bio,
-                link: payload.data.html_url,
-                blog: payload.data.blog,
-                email: payload.data.email,
+            isLoggedIn: false,
+            loggedInUser: {
+                token: '',
+                name: '',
+                avatar: '',
             },
         };
     default:
