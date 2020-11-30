@@ -1,0 +1,24 @@
+.connect {
+    @include flex(center, center, column);
+    padding: 30rem 0 0 0;
+    font-size: 1.6rem;
+    background: $secondary-bg;
+    color: $primary-text;
+    height: 100vh;
+    overflow-y: scroll;
+
+    @include media($mediaSM) {
+        padding: 10rem 0 0 0;
+        overflow-y: auto;
+        height: 100%;
+    }
+
+    &__btn {
+        width: unset;
+        font-size: 1.2rem;
+
+        @include media($mediaSM) {
+            font-size: 1.4rem;
+        }
+    }
+}
