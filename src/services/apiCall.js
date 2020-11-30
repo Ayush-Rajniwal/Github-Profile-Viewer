@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { API_URL } from '@constants/variables';
 
-const GET = (endpoint, payload) => {
+const apiCall = (method, endpoint, payload) => {
     const config = {
-        method: 'get',
+        method,
         url: `${API_URL}${endpoint}`,
     };
 
@@ -13,4 +13,4 @@ const GET = (endpoint, payload) => {
 
     return axios(config);
 };
-export default GET;
+export default apiCall;

@@ -6,13 +6,29 @@
         );
     }
 
-    &__uppercase {
-        text-transform: uppercase;
+    &__padding {
+        &--small-tb {
+            padding: 0.25rem 0;
+        }
     }
 
     &__margin {
         &--tb {
             margin: 2rem 0;
+        }
+    }
+
+    &__text {
+        &--center {
+            text-align: center;
+        }
+
+        &--uppercase {
+            text-transform: uppercase;
+        }
+
+        &--large {
+            font-size: 4rem;
         }
     }
 }
