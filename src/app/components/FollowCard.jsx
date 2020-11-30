@@ -10,9 +10,7 @@ function FollowCard({
     const { t } = useTranslation();
 
     return (
-        <div
-            className="followCard"
-        >
+        <div className="followCard">
             <div className="followCard__img-wrapper">
                 <Avatar img={avatar} />
             </div>
@@ -28,6 +26,7 @@ function FollowCard({
                         className="button button--follow"
                         data-id={username}
                         onClick={onFollow}
+                        onKeyPress={onFollow}
                     >
                         <i data-id={username} className="icon icon-user-add">
                             {t('Follow')}
@@ -39,6 +38,7 @@ function FollowCard({
                         className="button button--follow"
                         data-id={username}
                         onClick={onRemove}
+                        onKeyPress={onRemove}
                     >
                         <i data-id={username} className="icon icon-close">
                             {t('Remove')}
