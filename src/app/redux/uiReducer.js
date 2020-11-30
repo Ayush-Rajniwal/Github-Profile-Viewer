@@ -6,6 +6,7 @@ import {
     LANG_EN,
     LANG_HI,
 } from '@redux/actionTypes';
+import { EN, HI } from '@constants/variables';
 
 const uiInitialState = {
     isNavOpen: false,
@@ -66,13 +67,13 @@ function uiReducer(state = uiInitialState, action) {
     case LANG_EN:
         return {
             ...state,
-            lang: 'en',
+            lang: EN,
         };
 
     case LANG_HI:
         return {
             ...state,
-            lang: 'hi',
+            lang: HI,
         };
 
     default:
