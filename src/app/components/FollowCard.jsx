@@ -4,15 +4,14 @@ import PropTypes from 'prop-types';
 import Avatar from '@components/Avatar';
 import Button from '@components/Button';
 
-function FollowCard({ avatar, username, onClick }) {
+function FollowCard({
+    avatar, username, onFollow, onRemove,
+}) {
     const { t } = useTranslation();
 
     return (
         <div
-            role="presentation"
             className="followCard"
-            onKeyPress={onClick}
-            onClick={onClick}
         >
             <div className="followCard__img-wrapper">
                 <Avatar img={avatar} />
@@ -28,6 +27,7 @@ function FollowCard({ avatar, username, onClick }) {
                         type="button"
                         className="button button--follow"
                         data-id={username}
+                        onClick={onFollow}
                     >
                         <i data-id={username} className="icon icon-user-add">
                             {t('Follow')}
@@ -38,6 +38,7 @@ function FollowCard({ avatar, username, onClick }) {
                         id="following-btn"
                         className="button button--follow"
                         data-id={username}
+                        onClick={onRemove}
                     >
                         <i data-id={username} className="icon icon-close">
                             {t('Remove')}
@@ -52,7 +53,8 @@ function FollowCard({ avatar, username, onClick }) {
 FollowCard.propTypes = {
     avatar: PropTypes.string.isRequired,
     username: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired,
+    onFollow: PropTypes.func.isRequired,
+    onRemove: PropTypes.func.isRequired,
 };
 
 export default FollowCard;
