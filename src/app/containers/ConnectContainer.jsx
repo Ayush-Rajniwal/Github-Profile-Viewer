@@ -73,7 +73,6 @@ function ConnectContainer() {
     const onFollow = (e) => {
         emptyCheck();
         const { id } = e.target.dataset;
-        console.log(e.target);
 
         apiCall('PUT', `${FOLLOWING_URL}/${id}`, {
             isAuthenticated: true,
