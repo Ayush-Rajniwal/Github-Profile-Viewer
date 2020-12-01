@@ -74,27 +74,27 @@ function NavContainer() {
                     )}
 
                     <li>
-                        {isLoggedIn
-                            ? (
-                                <Button
-                                    type="button"
-                                    id="login-btn"
-                                    className="nav__link button button--primary"
-                                    onClick={logout}
-                                >
-                                    {t('Logout')}
-                                </Button>
-                            )
-                            : (
-                                <Button
-                                    id="logout-btn"
-                                    type="link"
-                                    className="nav__link button button--primary"
-                                    to="/login"
-                                >
-                                    {t('Login')}
-                                </Button>
-                            )}
+                        {isLoggedIn ? (
+                            <Button
+                                tabIndex="-1"
+                                type="button"
+                                id="login-btn"
+                                className="nav__link button button--primary"
+                                onClick={logout}
+                            >
+                                {t('Logout')}
+                            </Button>
+                        ) : (
+                            <Button
+                                tabIndex="-1"
+                                id="logout-btn"
+                                type="link"
+                                className="nav__link button button--primary"
+                                to="/login"
+                            >
+                                {t('Login')}
+                            </Button>
+                        )}
                     </li>
                 </ul>
             </nav>

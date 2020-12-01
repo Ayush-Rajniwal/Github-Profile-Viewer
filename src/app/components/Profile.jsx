@@ -23,8 +23,8 @@ function Profile({ profile, toggleFollowerList, toggleFollowingList }) {
                             <i className="icon icon-at-symbol" />
                         </IconText>
                     </a>
-                    {(profile.isLoggedIn
-                    && profile.loggedInUserName !== profile.username) && (
+                    {profile.isLoggedIn
+                        && profile.loggedInUserName !== profile.username && (
                         <Button
                             type="button"
                             id="profile-follow-btn"
@@ -46,28 +46,46 @@ function Profile({ profile, toggleFollowerList, toggleFollowingList }) {
                             <IconText
                                 className="u__text--center"
                                 text={
-                                    profile.location.length >= 10 ? `${profile.location.substring(0, 10)}...` : profile.location
+                                    profile.location.length >= 10
+                                        ? `${profile.location.substring(
+                                            0,
+                                            10,
+                                        )}...`
+                                        : profile.location
                                 }
                             >
                                 <i className="icon icon-location " />
                             </IconText>
                         )}
-
-                        <IconText
+                        <Button
+                            type="button"
+                            id="followers-btn"
                             onClick={toggleFollowerList}
-                            className="u__text--center u__text--uppercase"
+                            className="u__text--center u__text--uppercase button--follow"
                             text={t('Followers')}
                         >
-                            <div>{profile.followers}</div>
-                        </IconText>
+                            <IconText
+                                className="u__text--center u__text--uppercase"
+                                text={t('Followers')}
+                            >
+                                <div>{profile.followers}</div>
+                            </IconText>
+                        </Button>
 
-                        <IconText
+                        <Button
+                            type="button"
+                            id="following-btn"
                             onClick={toggleFollowingList}
-                            className="u__text--center u__text--uppercase"
+                            className="u__text--center u__text--uppercase button--follow"
                             text={t('Following')}
                         >
-                            <div>{profile.following}</div>
-                        </IconText>
+                            <IconText
+                                className="u__text--center u__text--uppercase"
+                                text={t('Following')}
+                            >
+                                <div>{profile.following}</div>
+                            </IconText>
+                        </Button>
 
                         {profile.email && (
                             <a href={`mailto:${profile.email}`}>
@@ -89,13 +107,13 @@ function Profile({ profile, toggleFollowerList, toggleFollowingList }) {
                                     <i className="icon icon-link" />
                                 </IconText>
                             </a>
-                        ) }
+                        )}
                     </div>
                     {profile.bio && (
                         <p className="profile__bio u__text--center">
                             {profile.bio}
                         </p>
-                    ) }
+                    )}
                 </div>
             </div>
         </div>

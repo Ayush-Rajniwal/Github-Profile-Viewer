@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 import { LINK, SUBMIT } from '@constants/variables';
 
 function Button({
-    type, to, onClick, className, children, id,
+    type, to, onClick, className, children, id, ...rest
 }) {
     switch (type) {
     case LINK:
         return (
             <Link to={to} onClick={onClick}>
-                <button type="button" className={className}>
+                <button type="button" className={className} {...rest}>
                     {children}
                 </button>
             </Link>
@@ -22,6 +22,7 @@ function Button({
                 id={id}
                 type="submit"
                 className={`button ${className}`}
+                {...rest}
             >
                 {children}
             </button>
@@ -34,6 +35,7 @@ function Button({
                 type="button"
                 id={id}
                 className={`button ${className}`}
+                {...rest}
             >
                 {children}
             </button>
