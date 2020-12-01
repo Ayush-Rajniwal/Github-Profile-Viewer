@@ -65,16 +65,18 @@ function LoginForm() {
         >
             <Form className="form u__shadow">
                 <InputText
+                    aria-label="Username"
                     type="text"
                     name="username"
                     label={t('Username')}
                     placeholder={t('Profile Name')}
                 />
                 <InputText
+                    aria-label="password"
                     type="password"
                     name="password"
                     label={t('Password')}
-                    placeholder={t('Token')}
+                    placeholder={t('Password')}
                 />
                 <Button
                     id="login-submit"

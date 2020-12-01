@@ -7,7 +7,7 @@ import Button from '@components/Button';
 import FollowCard from '@components/FollowCard';
 import Loader from '@components/Loader';
 import {
-    FOLLOW, REMOVE, FOLLOWING_URL, USERS_URL,
+    FOLLOWING_URL, USERS_URL,
 } from '@constants/variables';
 import { START_LOADING, STOP_LOADING } from '@redux/actionTypes';
 import apiCall from '@services/apiCall';
@@ -70,30 +70,28 @@ function ConnectContainer() {
         emptyCheck();
     };
 
-    const clickHandler = (e) => {
+    const onFollow = (e) => {
         emptyCheck();
         const { id } = e.target.dataset;
 
-        switch (e.target.innerText) {
-        case FOLLOW:
-            apiCall('PUT', `${FOLLOWING_URL}/${id}`, {
-                isAuthenticated: true,
-                password: loggedInUser.token,
+        apiCall('PUT', `${FOLLOWING_URL}/${id}`, {
+            isAuthenticated: true,
+            password: loggedInUser.token,
+        })
+            .then(() => {
+                setError(false);
             })
-                .then(() => {
-                    setError(false);
-                })
-                .catch(() => {
-                    setError(true);
-                });
-            setUserList(userList.filter((ele) => id !== ele.login));
-            break;
-        case REMOVE:
-            setUserList(userList.filter((ele) => id !== ele.login));
-            break;
-        default:
-            break;
-        }
+            .catch(() => {
+                setError(true);
+            });
+        setUserList(userList.filter((ele) => id !== ele.login));
+    };
+
+    const onRemove = (e) => {
+        emptyCheck();
+        const { id } = e.target.dataset;
+
+        setUserList(userList.filter((ele) => id !== ele.login));
     };
 
     if (isLoading) {
@@ -123,10 +121,11 @@ function ConnectContainer() {
                         return (
                             <FollowCard
                                 data-id={`${user.login}`}
-                                onClick={clickHandler}
                                 key={`${user.login}`}
                                 avatar={`${user.avatar}`}
                                 username={`${user.login}`}
+                                onFollow={onFollow}
+                                onRemove={onRemove}
                             />
                         );
                     })}
