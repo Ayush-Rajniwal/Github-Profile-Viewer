@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 
 function Profile({ profile, toggleFollowerList, toggleFollowingList }) {
     const { t } = useTranslation();
+
     return (
         <div className="profile__container">
             <div className="profile__left-section">

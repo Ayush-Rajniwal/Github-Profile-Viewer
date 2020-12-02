@@ -12,6 +12,7 @@ import { LOGIN_USER, SAVE_USER } from '@redux/actionTypes';
 
 function LoginForm() {
     const { t } = useTranslation();
+
     const history = useHistory();
 
     const [loginError, setLoginError] = useState(false);
