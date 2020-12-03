@@ -67,7 +67,8 @@
                     ["@provider", "./src/providers"],
                     ["@locales", "./src/locales"],
                     ["@constants","./src/constants"],
-                    ["@services","./src/services"]
+                    ["@services","./src/services"],
+                    ["@utils","./src/utils"]
                ],
                 "extensions": [".js", ".jsx", ".json"] 
             }

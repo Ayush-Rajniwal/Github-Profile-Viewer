@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 function NotFound() {
     const { t } = useTranslation();
+
     return (
         <div className="notFound u__text--center">
             <div className="notFound__title">404</div>
